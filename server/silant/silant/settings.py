@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-q$k&%ijl@*w!+316oy)qn#(+esck1h)x@7y396gr+u3qs^v#-x
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# AUTH_USER_MODEL = 'User'
 
 # Application definition
 
@@ -35,16 +36,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
+    'rest_framework',
+    'rest_framework_swagger',
+    'rest_framework.authtoken',
     'corsheaders',
-
+    'silant',
+    'authentication',
 
 ]
-
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     "corsheaders.middleware.CorsMiddleware",
-    'django.middleware.common.CommonMiddleware',
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -133,3 +140,21 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
 
 ]
+ACCOUNT_ADAPTER = 'myproject.account.adapter.DefaultAccountAdapter'
+ACCOUNT_ALLOW_SIGNUPS = False
+is_open_for_signup = 'False'
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
+    ],
+}
+
+CORS_ORIGIN_ALLOW_ALL = True  # access to api from any domains
+
+SWAGGER_SETTINGS = {
+
+    'VALIDATOR_URL': 'http://localhost:8189',
+
+}
