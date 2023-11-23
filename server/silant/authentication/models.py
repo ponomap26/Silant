@@ -24,4 +24,5 @@ class ProfileUser(models.Model):
         (Consignee, "Грузополучатель")
     )
     category = models.CharField(max_length=21, choices=CATEGORY_CHOICES, default=Client, verbose_name=("Категория"))
-    # company = models.ForeignKey(Users, on_delete=models.CASCADE)
+    def __str__(self):
+        return f'{self.user}'
