@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from authentication.models import ProfileUser, CompaniUser
-from authentication.serializers import ProfileUserSerializer, CompaniUserSerializer
+from .models import ProfileUser
+from .serializers import ProfileUserSerializer
 
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
@@ -31,6 +31,6 @@ class ProfileUserViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileUserSerializer
 
 
-class UserCompaniViewSet(viewsets.ModelViewSet):
-    queryset = CompaniUser.objects.all()
-    serializer_class = CompaniUserSerializer
+# class UserCompaniViewSet(viewsets.ModelViewSet):
+#     queryset = CompaniUser.objects.all()
+#     serializer_class = CompaniUserSerializer

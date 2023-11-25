@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
-from logics.models import ModelLoading
+from .models import ModelCar
 
 
 class InfoLoadersSerializer (serializers.ModelSerializer):
     class Meta:
-        model = ModelLoading
+        model = ModelCar
         fields = '__all__'
