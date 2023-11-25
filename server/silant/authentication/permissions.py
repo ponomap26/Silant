@@ -1,13 +1,15 @@
 from rest_framework import permissions
-
-class IsOwnerOrReadOnly(permissions.BasePermission):
-
-
-    def has_object_permission(self, request, view, obj):
-        # Read permissions are allowed to any request,
-        # so we'll always allow GET, HEAD or OPTIONS requests.
-        if request.method in permissions.SAFE_METHODS:
+class IsPostOrIsAuthenticated(permissions.BasePermission):
+    def has_permission(self, request, view):
+        # allow all POST requests
+        if request.method == 'GET':
             return True
-
-        # Write permissions are only allowed to the owner of the object.
-        return obj.user == request.user
+        if request.method == 'POST':
+            return True
+        if request.method == 'PATCH':
+            return True
+        if request.method == 'DELETE':
+            return True
+        # Otherwise, only allow authenticated requests
+        # Post Django 1.10, 'is_authenticated' is a read-only attribute
+        return request.user and request.user.is_authenticated
