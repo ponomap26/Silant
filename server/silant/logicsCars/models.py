@@ -10,8 +10,10 @@ class ModelsLoader(models.Model):
     class Meta:
         verbose_name = 'модель Погрузчик'
         verbose_name_plural = 'модель Погрузчик'
+
     def __str__(self):
         return f'{self.name}'
+
 
 class Engines(models.Model):
     modelEngines = models.TextField(max_length=128, verbose_name='Двигатель')
@@ -67,8 +69,10 @@ class Consignee(models.Model):
     class Meta:
         verbose_name = 'Получатель'
         verbose_name_plural = 'Получатель'
+
     def __str__(self):
         return f'{self.name}'
+
 
 class ModelCar(models.Model):
     name = models.CharField(unique=True, max_length=117, verbose_name='Название')
@@ -90,10 +94,9 @@ class ModelCar(models.Model):
     equipment = models.TextField(verbose_name='Комплектация')
     serviCompanies = models.ForeignKey(ServisCompanies, on_delete=models.PROTECT, verbose_name='Сервисная компания')
 
-    class Meta:
-        verbose_name = 'Погрузчик'
-
-        verbose_name_plural = 'Погрузчик'
-
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'Погрузчик'
+        verbose_name_plural = 'Погрузчик'
