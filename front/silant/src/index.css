@@ -1,0 +1,8 @@
+* {
+  margin: 0;
+}
+
+@font-face {
+  font-family: Ferry;
+  src: url("./fonts/ferry_black.otf") format("opentype");
+}
