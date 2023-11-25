@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from logica.models import ModelLoading
+from logics.models import ModelLoading
 
 
 class InfoLoadersSerializer (serializers.ModelSerializer):

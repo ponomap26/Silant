@@ -1,18 +1,17 @@
-
+from django.contrib.auth.models import User
 from django.db import models
 
 
-class Users(models.Model):
-    name = models.CharField(max_length=128)
 
+class CompaniUser(models.Model):
+    name = models.TextField(max_length=128)
 
     def __str__(self):
-        return f'{self.name}'
+        return self.name
 
 
 class ProfileUser(models.Model):
-
-    user = models.OneToOneField(Users, on_delete=models.CASCADE, verbose_name=("Пользователь"))
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=("Пользователь"))
     Consignee = "Грузополучатель"
     Client = "Клиент"
     Service = "Сервисная организация"
@@ -23,6 +22,7 @@ class ProfileUser(models.Model):
         (Manager, "Менеджер"),
         (Consignee, "Грузополучатель")
     )
-    category = models.CharField(max_length=21, choices=CATEGORY_CHOICES, default=Client, verbose_name=("Категория"))
+    сategory = models.CharField(max_length=21, choices=CATEGORY_CHOICES, default=Client, verbose_name=("Категория"))
+    company = models.ForeignKey(CompaniUser, on_delete=models.CASCADE)
     def __str__(self):
         return f'{self.user}'

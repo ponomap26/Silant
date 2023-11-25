@@ -26,7 +26,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,33 +37,45 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'drf_yasg',
     'rest_framework',
-    'rest_framework_swagger',
     'rest_framework.authtoken',
+    # 'rest_framework_swagger',
+    'djoser',
     'corsheaders',
     'silant',
     'authentication',
-    'logica'
+    'logics',
+    'swagger'
 
 ]
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-    ],
-}
+
+
 SITE_ID = 1
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+ACCOUNT_ADAPTER = 'myproject.account.adapter.DefaultAccountAdapter'
+ACCOUNT_ALLOW_SIGNUPS = False
+is_open_for_signup = 'False'
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
+    ]
+}
+
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
+}
+
+CORS_ORIGIN_ALLOW_ALL = True  # access to api from any domains
 
 ROOT_URLCONF = 'silant.urls'
 
@@ -144,13 +155,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
 
-]
-ACCOUNT_ADAPTER = 'myproject.account.adapter.DefaultAccountAdapter'
-ACCOUNT_ALLOW_SIGNUPS = False
-is_open_for_signup = 'False'
-
-CORS_ORIGIN_ALLOW_ALL = True  # access to api from any domains
-
+APPEND_SLASH = False

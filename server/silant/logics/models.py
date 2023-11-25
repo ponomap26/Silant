@@ -13,7 +13,7 @@ class EnginesNumbers(models.Model):
     number = models.CharField(max_length=117, verbose_name="номер двигателя")
     # models = models.CharField(max_length=117, verbose_name="модель двигателя")
     def __str__(self):
-        return self.models
+        return self.number
 
     class Meta:
         verbose_name = 'двигателя'
