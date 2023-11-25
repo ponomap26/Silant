@@ -20,7 +20,7 @@ class TokenAuthView(ObtainAuthToken):
             'token': token.key,
             'user_id': user.pk,
             'user_name': user.username,
-            'сategory': queryset.сategory,
+            'category': queryset.сategory,
 
 
 
