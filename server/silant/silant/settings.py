@@ -66,14 +66,17 @@ ACCOUNT_ADAPTER = 'myproject.account.adapter.DefaultAccountAdapter'
 ACCOUNT_ALLOW_SIGNUPS = False
 is_open_for_signup = 'False'
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication'
-    ]
+        'rest_framework.authentication.BasicAuthentication',
+    ],
 }
 
-SIMPLE_JWT = {
-   'AUTH_HEADER_TYPES': ('JWT',),
-}
+# SIMPLE_JWT = {
+#    'AUTH_HEADER_TYPES': ('JWT',),
+# }
 
 CORS_ORIGIN_ALLOW_ALL = True  # access to api from any domains
 
