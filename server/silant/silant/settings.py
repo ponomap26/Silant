@@ -44,10 +44,10 @@ INSTALLED_APPS = [
     'silant',
     'authentication',
     'logicsCars',
+    'maintenanceCar'
     # 'swagger'
 
 ]
-
 
 SITE_ID = 1
 
@@ -66,6 +66,10 @@ ACCOUNT_ADAPTER = 'myproject.account.adapter.DefaultAccountAdapter'
 ACCOUNT_ALLOW_SIGNUPS = False
 is_open_for_signup = 'False'
 REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],

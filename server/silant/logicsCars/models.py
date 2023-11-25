@@ -1,6 +1,6 @@
 from django.db import models
 
-from authentication.models import ProfileUser
+from authentication.models import ServisCompanies
 
 
 class ModelsLoader(models.Model):
@@ -10,7 +10,8 @@ class ModelsLoader(models.Model):
     class Meta:
         verbose_name = 'модель Погрузчик'
         verbose_name_plural = 'модель Погрузчик'
-
+    def __str__(self):
+        return f'{self.name}'
 
 class Engines(models.Model):
     modelEngines = models.TextField(max_length=128, verbose_name='Двигатель')
@@ -57,7 +58,7 @@ class BridgeSteerable(models.Model):
         verbose_name_plural = 'Управляемый мост'
 
     def __str__(self):
-        return f'{self.BridgeSteerable}'
+        return f'{self.modelBridge}'
 
 
 class Consignee(models.Model):
@@ -66,7 +67,8 @@ class Consignee(models.Model):
     class Meta:
         verbose_name = 'Получатель'
         verbose_name_plural = 'Получатель'
-
+    def __str__(self):
+        return f'{self.name}'
 
 class ModelCar(models.Model):
     name = models.CharField(unique=True, max_length=117, verbose_name='Название')
@@ -85,6 +87,8 @@ class ModelCar(models.Model):
     dateShipping = models.DateField(db_index=True, verbose_name='Дата отгрузки с завода')
     consignee = models.ForeignKey(Consignee, on_delete=models.PROTECT, max_length=128, verbose_name='Получатель')
     addresDelivery = models.TextField(verbose_name='Адрес поставки')
+    equipment = models.TextField(verbose_name='Комплектация')
+    serviCompanies = models.ForeignKey(ServisCompanies, on_delete=models.PROTECT, verbose_name='Сервисная компания')
 
     class Meta:
         verbose_name = 'Погрузчик'

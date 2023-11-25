@@ -21,8 +21,8 @@ class TokenAuthView(ObtainAuthToken):
             'user_id': user.pk,
             'user_name': user.username,
             'сategory': queryset.сategory,
-            'company_id': queryset.company.id,
-            'company_name': queryset.company.name
+
+
 
         })
 
@@ -31,6 +31,3 @@ class ProfileUserViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileUserSerializer
 
 
-# class UserCompaniViewSet(viewsets.ModelViewSet):
-#     queryset = CompaniUser.objects.all()
-#     serializer_class = CompaniUserSerializer

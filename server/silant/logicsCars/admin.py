@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
+
 from .models import Engines, ModelsLoader, Transmission, BridgeSteerable, Bridge, ModelCar, Consignee
 
 admin.site.register(ModelsLoader)
@@ -10,4 +11,5 @@ admin.site.register(BridgeSteerable)
 admin.site.register(Bridge)
 admin.site.register(ModelCar)
 admin.site.register(Consignee)
+
 
