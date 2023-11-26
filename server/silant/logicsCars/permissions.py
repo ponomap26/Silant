@@ -25,8 +25,8 @@ class UserAutorisation(permissions.IsAuthenticated):
             return False
         if request.method == 'POST' and UserAutch.сategory == "Менеджер":
             return True
-        # if request.method == 'PATCH' and UserAutch.сategory == "Менеджер":
-        #     return True
+        if request.method == 'PATCH' and UserAutch.сategory == "Менеджер":
+            return True
         if request.method == 'DELETE' and UserAutch.сategory == "Менеджер":
             return True
 

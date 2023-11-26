@@ -7,6 +7,7 @@ class ServisCompanies(models.Model):
 
     class Meta:
         verbose_name = "Сервисная компания"
+        verbose_name_plural = 'Сервисная компания'
 
     def __str__(self):
         return f'{self.name}'
@@ -25,5 +26,10 @@ class ProfileUser(models.Model):
         (Consignee, "Грузополучатель")
     )
     category = models.CharField(max_length=21, choices=CATEGORY_CHOICES, default=Client, verbose_name=("Категория"))
+
+    class Meta:
+        verbose_name = 'Профиль пользователя'
+        verbose_name_plural = 'Профиль пользователя'
+
     def __str__(self):
-        return f'{self.user}'
+        return f'{self.user} ( {self.category})'

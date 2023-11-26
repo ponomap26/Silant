@@ -5,7 +5,7 @@ from authentication.models import ServisCompanies
 
 class ModelsLoader(models.Model):
     name = models.TextField(max_length=128, verbose_name='Название Модели ')
-    specification = models.TextField(blank=True, verbose_name='Описание')
+
 
     class Meta:
         verbose_name = 'модель Погрузчик'
@@ -17,7 +17,7 @@ class ModelsLoader(models.Model):
 
 class Engines(models.Model):
     modelEngines = models.TextField(max_length=128, verbose_name='Двигатель')
-    specification = models.TextField(blank=True, verbose_name='Описание')
+
 
     class Meta:
         verbose_name = 'Двигатель'
@@ -29,7 +29,7 @@ class Engines(models.Model):
 
 class Transmission(models.Model):
     modelTransmission = models.TextField(max_length=128, verbose_name='Трансмисия')
-    specification = models.TextField(blank=True, verbose_name='Описание')
+
 
     class Meta:
         verbose_name = 'Трансмисия'
@@ -41,7 +41,7 @@ class Transmission(models.Model):
 
 class Bridge(models.Model):
     modelBridge = models.TextField(max_length=128, verbose_name='Ведуший мост')
-    specification = models.TextField(blank=True, verbose_name='Описание')
+
 
     class Meta:
         verbose_name = 'Ведущей мост'
@@ -52,30 +52,22 @@ class Bridge(models.Model):
 
 
 class BridgeSteerable(models.Model):
-    modelBridge = models.TextField(max_length=128, verbose_name='Управляемый мост')
-    specification = models.TextField(blank=True, verbose_name='Описание')
+    modelSteerable = models.TextField(max_length=128, verbose_name='Управляемый мост')
+
 
     class Meta:
         verbose_name = 'Управляемый мост'
         verbose_name_plural = 'Управляемый мост'
 
     def __str__(self):
-        return f'{self.modelBridge}'
+        return f'{self.modelSteerable}'
 
 
-class Consignee(models.Model):
-    name = models.CharField(max_length=128, verbose_name="Грузополучатель")
 
-    class Meta:
-        verbose_name = 'Получатель'
-        verbose_name_plural = 'Получатель'
-
-    def __str__(self):
-        return f'{self.name}'
 
 
 class ModelCar(models.Model):
-    name = models.CharField(unique=True, max_length=117, verbose_name='Название')
+    name = models.ForeignKey(ModelsLoader, on_delete=models.PROTECT, max_length=117, verbose_name='Название')
     numberFactory = models.CharField(max_length=117, verbose_name="Заводской номер")
     modelsEngines = models.ForeignKey(Engines, on_delete=models.PROTECT, verbose_name='Модель двигателя')
     numberEngines = models.CharField(max_length=128, verbose_name='Номер двигателя')
@@ -89,10 +81,11 @@ class ModelCar(models.Model):
     numberBridgeSteerable = models.CharField(max_length=128, verbose_name='Номер управляемого моста')
     contractSupply = models.CharField(max_length=50, blank=True, verbose_name='Договор поставки №, дата.')
     dateShipping = models.DateField(db_index=True, verbose_name='Дата отгрузки с завода')
-    consignee = models.ForeignKey(Consignee, on_delete=models.PROTECT, max_length=128, verbose_name='Получатель')
+    consignee = models.CharField( max_length=128, verbose_name='Получатель')
     addresDelivery = models.TextField(verbose_name='Адрес поставки')
     equipment = models.TextField(verbose_name='Комплектация')
-    serviCompanies = models.ForeignKey(ServisCompanies, on_delete=models.PROTECT, verbose_name='Сервисная компания')
+    client = models.CharField(max_length=128, blank=True, verbose_name="Клиент")
+    serviCompanies = models.ForeignKey(ServisCompanies, blank=False, on_delete=models.PROTECT, verbose_name='Сервисная компания')
 
     def __str__(self):
         return self.name
@@ -100,3 +93,4 @@ class ModelCar(models.Model):
     class Meta:
         verbose_name = 'Погрузчик'
         verbose_name_plural = 'Погрузчик'
+

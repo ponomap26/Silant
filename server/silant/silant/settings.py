@@ -38,13 +38,14 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_swagger',
+    # 'rest_framework_swagger',
     'djoser',
     'corsheaders',
     'silant',
     'authentication',
     'logicsCars',
     'maintenanceCar',
+    "complaints",
 
 
 ]
@@ -74,7 +75,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
 }
 

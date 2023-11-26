@@ -1,2 +1,6 @@
 
 /server/venv/
+/server/silant/maintenanceCar/migrations/
+/server/silant/logicsCars/migrations/
+/server/silant/complaints/migrations/
+/server/silant/authentication/migrations/

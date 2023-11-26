@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 from logicsCars.models import ModelCar
 
 
@@ -15,8 +15,10 @@ class CarTo(models.Model):
     def __str__(self):
         return self.maintenance
 
+
 class CarMaintenance(models.Model):
-    forklifts = models.ForeignKey(ModelCar, on_delete=models.PROTECT, verbose_name="Погрузчик")
+    id = models.AutoField(primary_key=True)
+    number = models.ForeignKey(ModelCar, on_delete=models.PROTECT, max_length=128, verbose_name="Заводской номер Погрузчик")
     carTo = models.ForeignKey(CarTo, on_delete=models.PROTECT, verbose_name="Вид ТО")
     dataTo = models.DateField(db_index=True, verbose_name="Дата проведения ТО")
     operatingTime = models.CharField(max_length=128, blank=True, verbose_name="Наработка")
@@ -24,9 +26,8 @@ class CarMaintenance(models.Model):
     data_order_outfit = models.DateField(db_index=True, verbose_name="Дата заказ наряда")
 
     def __str__(self):
-        return f'{self.forklifts, self.carTo}'
+        return f'Серийный номер погрузчика {self.forklifts}: -Выполненое ТО {self.carTo}'
 
     class Meta:
         verbose_name = "ТО"
         verbose_name_plural = "ТО"
-
