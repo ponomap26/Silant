@@ -68,7 +68,7 @@ class BridgeSteerable(models.Model):
 
 class ModelCar(models.Model):
     name = models.ForeignKey(ModelsLoader, on_delete=models.PROTECT, max_length=117, verbose_name='Название')
-    numberFactory = models.CharField(max_length=117, verbose_name="Заводской номер")
+    numberFactory = models.CharField(unique=True, max_length=117, verbose_name="Заводской номер")
     modelsEngines = models.ForeignKey(Engines, on_delete=models.PROTECT, verbose_name='Модель двигателя')
     numberEngines = models.CharField(max_length=128, verbose_name='Номер двигателя')
     date_created = models.DateField(db_index=True, verbose_name="Дата создания", auto_now_add=True, null=True)
@@ -88,9 +88,11 @@ class ModelCar(models.Model):
     serviCompanies = models.ForeignKey(ServisCompanies, blank=False, on_delete=models.PROTECT, verbose_name='Сервисная компания')
 
     def __str__(self):
-        return self.name
+        return f'{self.name} Зав № {self.numberFactory}'
 
     class Meta:
+        constraints = [
+        models.UniqueConstraint(fields=['numberFactory'], name='unique_number_factory')]
         verbose_name = 'Погрузчик'
         verbose_name_plural = 'Погрузчик'
 

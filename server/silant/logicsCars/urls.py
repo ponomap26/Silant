@@ -2,10 +2,10 @@
 from django.urls import include, path
 
 
-from .views import ModelLoadingViewSet
+from .views import ModelCarViewSet
 
 urlpatterns = [
-    path('models/', ModelLoadingViewSet.as_view({'get': 'list', 'post': 'create', })),
-    path('models/<int:pk>/', ModelLoadingViewSet.as_view({'get': 'list', 'delete': 'delete'})),
+    path('models/', ModelCarViewSet.as_view({'get': 'list', 'post': 'create', })),
+    path('models/<int:pk>/', ModelCarViewSet.as_view({'get': 'list', 'delete': 'delete'})),
 
 ]

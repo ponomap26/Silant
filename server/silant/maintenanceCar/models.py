@@ -1,6 +1,6 @@
 from django.db import models
 
-
+# from logicsCars.models import ModelCar
 from logicsCars.models import ModelCar
 
 
@@ -17,17 +17,21 @@ class CarTo(models.Model):
 
 
 class CarMaintenance(models.Model):
-    id = models.AutoField(primary_key=True)
-    number = models.ForeignKey(ModelCar, on_delete=models.PROTECT, max_length=128, verbose_name="Заводской номер Погрузчик")
-    carTo = models.ForeignKey(CarTo, on_delete=models.PROTECT, verbose_name="Вид ТО")
+    Number = models.ForeignKey(ModelCar, on_delete=models.PROTECT, to_field='numberFactory')
+    carTo = models.ForeignKey(CarTo, on_delete=models.PROTECT,  verbose_name="Вид ТО")
     dataTo = models.DateField(db_index=True, verbose_name="Дата проведения ТО")
     operatingTime = models.CharField(max_length=128, blank=True, verbose_name="Наработка")
     order_outfit = models.CharField(max_length=128, blank=True, verbose_name="Номер заказ наряда")
     data_order_outfit = models.DateField(db_index=True, verbose_name="Дата заказ наряда")
 
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(args, kwargs)
+    #     self.numberFactory = None
+
     def __str__(self):
-        return f'Серийный номер погрузчика {self.forklifts}: -Выполненое ТО {self.carTo}'
+        return f' {self.Number} - {self.carTo}'
 
     class Meta:
         verbose_name = "ТО"
         verbose_name_plural = "ТО"
+

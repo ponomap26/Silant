@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import ModelCar, CarMaintenance
+from .models import  CarMaintenance
 
 
 class CarMaintenanceInfoLoadersSerializer (serializers.ModelSerializer):

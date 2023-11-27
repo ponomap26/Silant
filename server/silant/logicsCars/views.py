@@ -4,11 +4,18 @@ from django.shortcuts import render
 from rest_framework import viewsets
 
 from .models import ModelCar
-from .permissions import UserAutorisation
-from .serializers import InfoLoadersSerializer
+from .permissions import IsClientOrManager
+from .serializers import ModelCarSerializer
 
 
-class ModelLoadingViewSet(viewsets.ModelViewSet):
+class ModelCarViewSet(viewsets.ModelViewSet):
     queryset = ModelCar.objects.all()
-    serializer_class = InfoLoadersSerializer
-    permission_classes = (UserAutorisation)
+    serializer_class = ModelCarSerializer
+    permission_classes = (IsClientOrManager)
+
+    # def get_queryset(self):
+    #     queryset = ModelCar.objects.all()
+    #     Id = self.request.query_params.get('id', None)
+    #     if Id is not None:
+    #         queryset = queryset.filter(id=Id)
+    #     return queryset

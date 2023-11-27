@@ -1,6 +1,8 @@
 from django.db import models
 
 from authentication.models import ServisCompanies
+# from logicsCars.models import ModelCar
+from logicsCars.models import ModelCar
 
 
 class NodeFailure(models.Model):
@@ -15,6 +17,7 @@ class PartSpare(models.Model):
         return self.name
 
 class Complaint(models.Model):
+    carNumber = models.ForeignKey(ModelCar, on_delete=models.PROTECT, to_field='numberFactory', verbose_name="")
     dataRefusal = models.DateField(db_index=True, verbose_name="Дата отказа")
     operatingTime = models.CharField(max_length=128, blank=True, verbose_name="Наработка")
     nodeFailure = models.ForeignKey(NodeFailure, on_delete=models.PROTECT, verbose_name="Узел отказа")
