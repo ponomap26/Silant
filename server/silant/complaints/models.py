@@ -10,11 +10,19 @@ class NodeFailure(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = ("Характер отказа")
+        verbose_name_plural = ('Характер отказа')
+
 class PartSpare(models.Model):
     name = models.CharField(max_length=128,  verbose_name="способ восстановления")
 
     def __str__(self):
         return self.name
+    class Meta:
+        verbose_name = ("способ восстановления")
+        verbose_name_plural = ('способ восстановления')
+
 
 class Complaint(models.Model):
     carNumber = models.ForeignKey(ModelCar, on_delete=models.PROTECT, to_field='numberFactory', verbose_name="")
