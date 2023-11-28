@@ -1,37 +1,20 @@
 import React from "react";
-import {Router, Routes, Route} from "react-router-dom";
-import axios from "axios";
-
-
-const username = "postgres"
-const password = "221181"
+import { Router, Routes, Route } from "react-router-dom";
+import Main from "../Main/Main.jsx";
+import Auth from "../Auth/Auth.jsx";
 
 function App() {
-    const username = "postgres";
-    const password = "221181";
+  return (
+    // Pass the history prop to the Router component
 
-    const fetchData = async () => {
-        try {
-            const response = await axios.post(
-                "http://127.0.0.1:8000/token/",
-                {
-                    username: username,
-                    password: password
-                }
-            );
-            console.log(response);
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
-    fetchData();
+         <Auth />
 
-    return (
-        <div>
-            {/* Остальная часть вашего компонента App */}
-        </div>
-    );
+
+
+
+  );
 }
+
 
 export default App;
