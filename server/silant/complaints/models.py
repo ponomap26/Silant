@@ -25,7 +25,7 @@ class PartSpare(models.Model):
 
 
 class Complaint(models.Model):
-    carNumber = models.ForeignKey(ModelCar, on_delete=models.PROTECT, to_field='numberFactory', verbose_name="")
+    carNumber = models.ForeignKey(ModelCar, on_delete=models.PROTECT, to_field='numberFactory', verbose_name="Заводской номер")
     dataRefusal = models.DateField(db_index=True, verbose_name="Дата отказа")
     operatingTime = models.CharField(max_length=128, blank=True, verbose_name="Наработка")
     nodeFailure = models.ForeignKey(NodeFailure, on_delete=models.PROTECT, verbose_name="Узел отказа")

@@ -1,20 +1,21 @@
 import React from "react";
-import { Router, Routes, Route } from "react-router-dom";
-import Main from "../Main/Main.jsx";
+import {Routes, Route} from "react-router-dom";
 import Auth from "../Auth/Auth.jsx";
+;
+import Compres from "../Comres/Compes";
+import Home from "../Main/Home/Home";
 
 function App() {
-  return (
-    // Pass the history prop to the Router component
+    return (
+        <>
+            <Routes>
 
+                <Route path="/" element={<Auth/>}/>
+                <Route path="/main" element={<Home/>}/>
 
-         <Auth />
-
-
-
-
-  );
+            </Routes>
+        </>
+    );
 }
-
 
 export default App;
