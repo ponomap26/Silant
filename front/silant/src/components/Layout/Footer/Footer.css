@@ -1,10 +1,27 @@
-.footer{
-    margin-top: 65px ;
-    background-color: #163E6C;
-}
-.footer__connectInfo{
-    text-align: flex-end;
-    margin-top: 27px;
-    color:white;
+.footer {
+  padding: 20px;
+  height: 100%;
+  margin-top: 65px;
+  background-color: #163E6C;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.footer__connectInfo {
+  text-align: center;
+  margin-top: 27px;
+  color: #fff;
+}
+
+.text {
+  font-size: 22px;
+  font-style: italic;
+
+}
+
+footer .text-2 {
+  font-size: 22px;
+  font-style: italic;
+
+}

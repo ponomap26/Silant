@@ -3,7 +3,9 @@ import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {logout, login} from "../../Auth/store/authReducer";
 import "./Header.css"
-import {Button} from "react-bootstrap";
+import {Button, NavLink} from "react-bootstrap";
+
+import logo1 from  "./logo1.png";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -33,41 +35,44 @@ const Header = () => {
         // Remove the authentication token from the local storage
         localStorage.removeItem("token");
 
-        navigate.push("/");
+        navigate.push('');
     };
 
     return (
-        <div>
+        <header className="header">
             <div className="screen">
-                {/*<img className="SGN" src={logo1} alt="logo" />*/}
-                <nav className="group">
+                <img className="nav-logo" src={logo1} alt="logo" />
+                <h1 className="element">
+                        +7 999 34 44 555 TELEGRAM
+                    </h1>
+                <h1 className="element_1">
+                        Электронная сервисная книжка "Мой Силант"
+                    </h1>
+                <NavLink className="group">
                     <Link className="text-wrapper" to="/">
                         Главная
                     </Link>
-                    <Link className="div">Тарифы</Link>
-                    <Link className="text-wrapper-2">FAQ</Link>
-                </nav>
+
+                </NavLink>
                 <div className="group-2">
                     <div className="overlap-group-wrapper">
                         {isAuthenticated ? (
                             <span className="overlap-group">
                 {auth.login}
-                                <Button onClick={handleLogout}>Выйти</Button>
+                                <Button  className="button-auch" variant="primary" onClick={handleLogout}>Выйти</Button>
               </span>
                         ) : (
                             <Link to="/login">
-                                <Button>Ауториация</Button>
+                                <Button  className="button-auch" variant="primary">Ауториация</Button>
                             </Link>
                         )}
                     </div>
-                    <div className="element_1">
-                        Электронная сервисная книжка
-                    </div>
+
 
 
                 </div>
             </div>
-        </div>
+        </header>
     );
 };
 
