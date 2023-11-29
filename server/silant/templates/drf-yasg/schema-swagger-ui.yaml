@@ -1,0 +1,629 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API  проекта Силант",
+        "description": "API documentation for My SILANT",
+        "contact": {
+            "email": "ponomap26@yandex.ru"
+        },
+        "license": {
+            "name": "BSD License"
+        },
+        "version": "v1"
+    },
+    "host": "127.0.0.1:8000/",
+    "schemes": [
+        "http"
+
+    ],
+    "basePath": "/",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Basic": {
+            "type": "basic"
+        }
+    },
+    "security": [
+        {
+            "Basic": []
+        }
+    ],
+    "paths": {
+        "/complaints/": {
+            "get": {
+                "operationId": "complaints_list",
+                "description": "РЕКЛАМАЦИЯ",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complaint"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "complaints"
+                ]
+            },
+            "post": {
+                "operationId": "complaints_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Рекламация"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Complaint"
+                        }
+                    }
+                },
+                "tags": [
+                    "complaints"
+                ]
+            },
+            "parameters": []
+        },
+        "/complaints/{id}/": {
+            "get": {
+                "operationId": "complaints_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complaint"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "complaints"
+                ]
+            },
+            "delete": {
+                "operationId": "complaints_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "complaints"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this Рекламации.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/maintence/": {
+            "get": {
+                "operationId": "maintence_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CarMaintenanceInfoLoaders"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "maintence"
+                ]
+            },
+            "post": {
+                "operationId": "maintence_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CarMaintenanceInfoLoaders"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/CarMaintenanceInfoLoaders"
+                        }
+                    }
+                },
+                "tags": [
+                    "maintence"
+                ]
+            },
+            "parameters": []
+        },
+        "/maintence/{id}/": {
+            "get": {
+                "operationId": "maintence_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CarMaintenanceInfoLoaders"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "maintence"
+                ]
+            },
+            "delete": {
+                "operationId": "maintence_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "maintence"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this ТО.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/models/": {
+            "get": {
+                "operationId": "models_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ModelCar"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "models"
+                ]
+            },
+            "parameters": []
+        },
+        "/models/{id}/": {
+            "get": {
+                "operationId": "models_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ModelCar"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "models"
+                ]
+            },
+            "delete": {
+                "operationId": "models_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "models"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this Погрузчик.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/token/": {
+            "post": {
+                "operationId": "token_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AuthToken"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AuthToken"
+                        }
+                    }
+                },
+                "tags": [
+                    "token"
+                ]
+            },
+            "parameters": []
+        },
+        "/users/": {
+            "get": {
+                "operationId": "users_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProfileUser"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "users"
+                ]
+            },
+            "parameters": []
+        }
+    },
+    "definitions": {
+        "Complaint": {
+            "required": [
+                "dataRefusal",
+                "descriptionFailure",
+                "partSpare",
+                "carNumber",
+                "nodeFailure",
+                "componyServisor"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "dataRefusal": {
+                    "title": "Дата отказа",
+                    "type": "string",
+                    "format": "date"
+                },
+                "operatingTime": {
+                    "title": "Наработка",
+                    "type": "string",
+                    "maxLength": 128
+                },
+                "descriptionFailure": {
+                    "title": "Описание отказа",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "partSpare": {
+                    "title": "Используемые запасные части",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "dataRecovery": {
+                    "title": "Дата восстановления",
+                    "type": "string",
+                    "format": "date"
+                },
+                "downtime": {
+                    "title": "Время простоя",
+                    "type": "string",
+                    "maxLength": 128
+                },
+                "carNumber": {
+                    "title": "Заводской номер",
+                    "type": "string"
+                },
+                "nodeFailure": {
+                    "title": "Узел отказа",
+                    "type": "integer"
+                },
+                "metodRecovery": {
+                    "title": "Способ восстановления",
+                    "type": "integer"
+                },
+                "componyServisor": {
+                    "title": "Сервисная компания",
+                    "type": "integer"
+                }
+            }
+        },
+        "CarMaintenanceInfoLoaders": {
+            "required": [
+                "dataTo",
+                "data_order_outfit",
+                "Number",
+                "carTo"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "dataTo": {
+                    "title": "Дата проведения ТО",
+                    "type": "string",
+                    "format": "date"
+                },
+                "operatingTime": {
+                    "title": "Наработка",
+                    "type": "string",
+                    "maxLength": 128
+                },
+                "order_outfit": {
+                    "title": "Номер заказ наряда",
+                    "type": "string",
+                    "maxLength": 128
+                },
+                "data_order_outfit": {
+                    "title": "Дата заказ наряда",
+                    "type": "string",
+                    "format": "date"
+                },
+                "Number": {
+                    "title": "Number",
+                    "type": "string"
+                },
+                "carTo": {
+                    "title": "Вид ТО",
+                    "type": "integer"
+                }
+            }
+        },
+        "ModelCar": {
+            "required": [
+                "name",
+                "modelsEngines",
+                "transmissions",
+                "modelsBridge",
+                "modelsBridgeSteerable",
+                "serviCompanies",
+                "numberFactory",
+                "numberEngines",
+                "numberTransmissions",
+                "numberBridge",
+                "numberBridgeSteerable",
+                "dateShipping",
+                "consignee",
+                "addressDelivery",
+                "equipment",
+                "serviceCompanies"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "modelsEngines": {
+                    "title": "Modelsengines",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "transmissions": {
+                    "title": "Transmissions",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "modelsBridge": {
+                    "title": "Modelsbridge",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "modelsBridgeSteerable": {
+                    "title": "Modelsbridgesteerable",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "serviCompanies": {
+                    "title": "Servicompanies",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "numberFactory": {
+                    "title": "Заводской номер",
+                    "type": "string",
+                    "maxLength": 117,
+                    "minLength": 1
+                },
+                "numberEngines": {
+                    "title": "Номер двигателя",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "dateCreated": {
+                    "title": "Дата создания",
+                    "type": "string",
+                    "format": "date",
+                    "readOnly": true,
+                    "x-nullable": true
+                },
+                "numberTransmissions": {
+                    "title": "Номер трансмиссии",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "numberBridge": {
+                    "title": "Номер Ведущего моста",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "numberBridgeSteerable": {
+                    "title": "Номер управляемого моста",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "contractSupply": {
+                    "title": "Договор поставки №, дата.",
+                    "type": "string",
+                    "maxLength": 50
+                },
+                "dateShipping": {
+                    "title": "Дата отгрузки с завода",
+                    "type": "string",
+                    "format": "date"
+                },
+                "consignee": {
+                    "title": "Получатель",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "addressDelivery": {
+                    "title": "Адрес поставки",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "equipment": {
+                    "title": "Комплектация",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "client": {
+                    "title": "Клиент",
+                    "type": "string",
+                    "maxLength": 128
+                },
+                "serviceCompanies": {
+                    "title": "Сервисная компания",
+                    "type": "integer"
+                }
+            }
+        },
+        "AuthToken": {
+            "required": [
+                "username",
+                "password"
+            ],
+            "type": "object",
+            "properties": {
+                "username": {
+                    "title": "Имя пользователя",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "password": {
+                    "title": "Пароль",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "token": {
+                    "title": "Токен",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                }
+            }
+        },
+        "ProfileUser": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "user": {
+                    "title": "User",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "category": {
+                    "title": "Категория",
+                    "type": "string",
+                    "enum": [
+                        "Клиент",
+                        "Сервисная организация",
+                        "Менеджер",
+                        "Грузополучатель"
+                    ]
+                }
+            }
+        }
+    }
+}

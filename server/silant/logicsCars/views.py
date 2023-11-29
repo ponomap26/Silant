@@ -15,9 +15,9 @@ class ModelCarViewSet(viewsets.ModelViewSet):
     serializer_class = ModelCarSerializer
     permission_classes = [IsClientOrManager]
 
-    # def get_queryset(self):
-    #     queryset = ModelCar.objects.all()
-    #     Id = self.request.query_params.get('id', None)
-    #     if Id is not None:
-    #         queryset = queryset.filter(id=Id)
-    #     return queryset
+    def get_queryset(self):
+        queryset = ModelCar.objects.all()
+        ids = self.request.query_params.get('id', None)
+        if ids is not None:
+            queryset = queryset.filter(id=ids)
+        return queryset

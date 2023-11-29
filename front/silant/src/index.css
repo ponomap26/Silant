@@ -1,8 +1,14 @@
-* {
-  margin: 0;
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  /* Браузер сначала попробует найти шрифт локально */
+  src: local("Inter"),
+       /* Если не получилось*/
+       url("./fonts/PT-Astra-Sans_Regular.ttf") format("truetype");
 }
 
-@font-face {
-  font-family: Ferry;
-  src: url("./fonts/ferry_black.otf") format("opentype");
+body {
+  margin: 0 auto;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
 }

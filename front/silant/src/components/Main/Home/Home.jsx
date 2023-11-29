@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Table } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.css';
+import "./Home.css"
 
 const Home = () => {
   const [response, setResponse] = useState(null);
@@ -26,8 +28,13 @@ const Home = () => {
 
   return (
     <>
-      {response && (
-        <Table striped bordered hover variant="dark">
+ <div className="container">
+      <div className="table-container">
+      <div>
+
+
+        {response && (
+        <Table  bordered responsive>
           <thead>
             <tr>
 
@@ -52,32 +59,35 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {response.map((model) => (
-              <tr key={model.id}>
-
-                <td>{model.numberFactory}</td>
-                <td>{model.numberEngines}</td>
-                <td>{model.date_created}</td>
-                <td>{model.numberTransmissions}</td>
-                <td>{model.numberBridge}</td>
-                <td>{model.numberBridgeSteerable}</td>
-                <td>{model.contractSupply}</td>
-                <td>{model.dateShipping}</td>
-                <td>{model.consignee}</td>
-                <td>{model.addresDelivery}</td>
-                <td>{model.equipment}</td>
-                <td>{model.client}</td>
-                <td>{model.name}</td>
-                <td>{model.modelsEngines}</td>
-                <td>{model.transmissions}</td>
-                <td>{model.modelsBridge}</td>
-                <td>{model.modelsBridgeSteerable}</td>
-                <td>{model.serviCompanies}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+              {response.map((model) => (
+                <tr key={model.id}>
+                  <td>{model.numberFactory}</td>
+                  <td>{model.numberEngines}</td>
+                  <td>{model.date_created}</td>
+                  <td>{model.numberTransmissions}</td>
+                  <td>{model.numberBridge}</td>
+                  <td>{model.numberBridgeSteerable}</td>
+                  <td>{model.contractSupply}</td>
+                  <td>{model.dateShipping}</td>
+                  <td>{model.consignee}</td>
+                  <td>{model.addresDelivery}</td>
+                  <td>{model.equipment}</td>
+                  <td>{model.client}</td>
+                  <td>{model.name}</td>
+                  <td>{model.modelsEngines}</td>
+                  <td>{model.transmissions}</td>
+                  <td>(model.modelsBridge)}</td>
+                  <td>{model.modelsBridgeSteerable}</td>
+                  <td>{model.serviceCompanies}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
       )}
+      </div>
+      </div>
+ </div>
+
     </>
   );
 };
