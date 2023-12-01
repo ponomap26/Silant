@@ -26,7 +26,7 @@ const Home = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log("token");
+    console.log(token);
     const fetchDataTO = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000//maintence/",{

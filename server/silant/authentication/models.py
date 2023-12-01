@@ -4,6 +4,16 @@ from django.db import models
 
 
 
+class Companies(models.Model):
+    name = models.CharField(max_length=128)
+
+    class Meta:
+        verbose_name = "компания"
+        verbose_name_plural = 'компания'
+
+    def __str__(self):
+        return f'{self.name}'
+
 class ServisCompanies(models.Model):
     name = models.CharField(max_length=128)
 
@@ -14,9 +24,8 @@ class ServisCompanies(models.Model):
     def __str__(self):
         return f'{self.name}'
 
-
 class ProfileUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=("Пользователь"))
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь")
     Consignee = "Грузополучатель"
     Client = "Клиент"
     Service = "Сервисная организация"
@@ -27,8 +36,8 @@ class ProfileUser(models.Model):
         (Manager, "Менеджер"),
         (Consignee, "Грузополучатель")
     )
-    category = models.CharField(max_length=21, choices=CATEGORY_CHOICES, default=Client, verbose_name=("Категория"))
-
+    category = models.CharField(max_length=21, choices=CATEGORY_CHOICES, default=Client, verbose_name="Категория")
+    company = models.ForeignKey(Companies, on_delete=models.PROTECT, verbose_name="Компания")
     class Meta:
         verbose_name = 'Профиль пользователя'
         verbose_name_plural = 'Профиль пользователя'

@@ -1,11 +1,11 @@
 from django.db import models
 
-from authentication.models import ServisCompanies
+from authentication.models import Companies, ServisCompanies
 
 
 class ModelsLoader(models.Model):
     name = models.TextField(max_length=128, verbose_name='Название Модели ')
-    description = models.TextField(blank=True, verbose_name='Описание')
+    description = models.TextField(blank=False, verbose_name='Описание')
 
     class Meta:
         verbose_name = 'модель Погрузчик'
@@ -17,7 +17,7 @@ class ModelsLoader(models.Model):
 
 class Engines(models.Model):
     modelEngines = models.TextField(max_length=128, verbose_name='Двигатель')
-    description = models.TextField(blank=True, verbose_name='Описание')
+    description = models.TextField(blank=False, verbose_name='Описание')
 
     class Meta:
         verbose_name = 'Двигатель'
@@ -29,7 +29,7 @@ class Engines(models.Model):
 
 class Transmission(models.Model):
     modelTransmission = models.TextField(max_length=128, verbose_name='Трансмисия')
-    description = models.TextField(blank=True, verbose_name='Описание')
+    description = models.TextField(blank=False, verbose_name='Описание')
 
     class Meta:
         verbose_name = 'Трансмисия'
@@ -41,7 +41,7 @@ class Transmission(models.Model):
 
 class Bridge(models.Model):
     modelBridge = models.TextField(max_length=128, verbose_name='Ведуший мост')
-    description = models.TextField(blank=True, verbose_name='Описание')
+    description = models.TextField(blank=False, verbose_name='Описание')
 
     class Meta:
         verbose_name = 'Ведущей мост'
@@ -53,7 +53,7 @@ class Bridge(models.Model):
 
 class BridgeSteerable(models.Model):
     modelSteerable = models.TextField(max_length=128, verbose_name='Управляемый мост')
-    description = models.TextField(verbose_name='Описание')
+    description = models.TextField(blank=False, verbose_name='Описание')
 
     class Meta:
         verbose_name = 'Управляемый мост'
@@ -85,8 +85,8 @@ class ModelCar(models.Model):
     consignee = models.CharField(max_length=128, db_index=True, verbose_name='Получатель')
     addressDelivery = models.TextField(db_index=True, verbose_name='Адрес поставки')
     equipment = models.TextField(db_index=True, verbose_name='Комплектация')
-    client = models.CharField(max_length=128, db_index=True, blank=True, verbose_name="Клиент")
-    serviceCompanies = models.ForeignKey(ServisCompanies, db_index=True, blank=False, on_delete=models.PROTECT,
+    client = models.ForeignKey(Companies, db_index=True, on_delete=models.PROTECT, blank=True, verbose_name="Клиент")
+    serviceCompanies = models.ForeignKey(ServisCompanies, db_index=True, blank=True, on_delete=models.PROTECT,
                                        verbose_name='Сервисная компания')
 
     def __str__(self):
