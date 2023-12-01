@@ -12,5 +12,5 @@ from .serializers import CarMaintenanceInfoLoadersSerializer
 class CarMaintenanceViewSet(viewsets.ModelViewSet):
     queryset = CarMaintenance.objects.all()
     serializer_class = CarMaintenanceInfoLoadersSerializer
-    permission_classes = (IsAtchTOService)
+    permission_classes = [IsAtchTOService]
 

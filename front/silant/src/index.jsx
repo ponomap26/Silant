@@ -6,6 +6,7 @@ import App from "./components/App/App.jsx";
 import {store} from "./components/Auth/store";
 import {DevSupport} from "@react-buddy/ide-toolbox";
 import {ComponentPreviews, useInitial} from "./dev"; // Import store from your store file
+import './index.css';
 
 ReactDOM.render(
     <BrowserRouter>

@@ -8,70 +8,82 @@ import {Button, NavLink} from "react-bootstrap";
 import logo1 from  "./logo1.png";
 
 const Header = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const auth = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("");
 
-    useEffect(() => {
-        const storedUsername = localStorage.getItem("login");
-        if (storedUsername) {
-            setUsername(storedUsername);
-        }
-    }, []);
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("login");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
 
-    useEffect(() => {
-        localStorage.setItem("login", username);
-    }, [username]);
+  useEffect(() => {
+    localStorage.setItem("login", name);
+  }, [name]);
+  console.log(name)
 
-    // Check if the user is authenticated
-    const isAuthenticated = !!localStorage.getItem("token");
+  // Check if the user is authenticated using the access token in localStorage
+  const isAuthenticated = !!localStorage.getItem("token");
 
-    const handleLogout = () => {
-        // Dispatch the logout action
-        dispatch(logout());
+  const handleLogout = () => {
+    // Dispatch the logout action
+    dispatch(logout());
 
-        // Remove the authentication token from the local storage
-        localStorage.removeItem("token");
+    // Remove the authentication token from the local storage
+    localStorage.removeItem("token");
 
-        navigate.push('');
-    };
+    // Redirect to the desired page (e.g., login page)
+    navigate("/");
+  };
+
 
     return (
         <header className="header">
             <div className="screen">
-                <img className="nav-logo" src={logo1} alt="logo" />
-                <h1 className="element">
+                <div>
+                    <img className="nav-logo" src={logo1} alt="logo" />
+                </div>
+
+                <div>
+                    <h1 className="element">
                         +7 999 34 44 555 TELEGRAM
                     </h1>
-                <h1 className="element_1">
+                </div>
+                <div>
+                    <h1 className="element_1">
                         Электронная сервисная книжка "Мой Силант"
                     </h1>
-                <NavLink className="group">
-                    <Link className="text-wrapper" to="/">
+                </div>
+                <div className="group">
+                    <Link to="/">
+                        <Button   variant="primary" className="button-aut-link" to="/">
                         Главная
+                    </Button>
                     </Link>
 
-                </NavLink>
-                <div className="group-2">
+                </div>
+
+                <div>
+                    <div className="group-2">
                     <div className="overlap-group-wrapper">
                         {isAuthenticated ? (
                             <span className="overlap-group">
-                {auth.login}
+                            {auth.login}
                                 <Button  className="button-auch" variant="primary" onClick={handleLogout}>Выйти</Button>
-              </span>
+                            </span>
                         ) : (
                             <Link to="/login">
                                 <Button  className="button-auch" variant="primary">Ауториация</Button>
                             </Link>
                         )}
                     </div>
-
-
-
                 </div>
             </div>
+                </div>
         </header>
     );
 };

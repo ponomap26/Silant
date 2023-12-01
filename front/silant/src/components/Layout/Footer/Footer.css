@@ -1,27 +1,25 @@
 .footer {
-  padding: 20px;
-  height: 100%;
-  margin-top: 65px;
-  background-color: #163E6C;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    padding: 20px;
+    height: 100%;
+    margin-top: 65px;
+    background-color: #163E6C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.footer__connectInfo {
-  text-align: center;
-  margin-top: 27px;
-  color: #fff;
-}
 
 .text {
-  font-size: 22px;
-  font-style: italic;
+    font-size: 22px;
+    font-style: italic;
+    font-family: PT Astra Sans;
+    color: #C7C7C7;
 
 }
 
 footer .text-2 {
-  font-size: 22px;
-  font-style: italic;
-
+    font-size: 22px;
+    font-style: italic;
+    font-family: PT Astra Sans;
+    color: #C7C7C7;
 }

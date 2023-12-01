@@ -67,9 +67,10 @@ ACCOUNT_ADAPTER = 'myproject.account.adapter.DefaultAccountAdapter'
 ACCOUNT_ALLOW_SIGNUPS = False
 is_open_for_signup = 'False'
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
+        # 'rest_framework.renderers.BrowsableAPIRenderer',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',

@@ -1,79 +1,96 @@
 .header {
     padding: 60px;
     position: relative;
-    margin:0 auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: #32629a
-}
-.header .element_1 {
-    font-size:18px;
-    width: 800px; /* задайте ширину элемента */
-    height: 50px; /* задайте высоту элемента */
-    border-radius: 10px; /* задайте радиус скругления углов */
-    background-color: #3f63ad; /* задайте цвет фона элемента */
-    color: #090909; /* задайте цвет текста элемента */
-    text-align: center; /* выравнивание текста по центру */
-    /*margin:auto; !* автоматическое выравнивание элемента по центру страницы *!*/
-    position: absolute;
-    top: 65px;
-    left: 350px;
-
-}
-.element {
-    font-size:18px;
-
-    width: 800px; /* задайте ширину элемента */
-    height: 50px; /* задайте высоту элемента */
-    border-radius: 10px; /* задайте радиус скругления углов */
-    background-color: #3f63ad; /* задайте цвет фона элемента */
-    color: #090909; /* задайте цвет текста элемента */
-    text-align: center; /* выравнивание текста по центру */
-    /*margin:auto; !* автоматическое выравнивание элемента по центру страницы *!*/
-    position: absolute;
-    top: 10px;
-    left: 350px;
-
-}
-.button-auch{
-    width: 200px; /* задайте ширину элемента */
-    height: 40px;
-    position: absolute;
-    top:50px;
-    right: 20px;
-    color:  #163E6C;
-
+    background-color: #32629a;
 }
 
 .header .screen {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.header .group {
-    display: flex;
     align-items: center;
+
+    position: relative;
 }
 
-.screen .nav-logo {
-    height: 150px;
-    left: 80px;
+.group, .group-2 {
+    display: flex;
+    justify-content: center;
+
+}
+
+.element_1,
+.element {
+    font-size: 18px;
+    width: 400px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #3f63ad;
+    color: #090909;
+    text-align: center;
+    margin: 10px;
+    font-family: 'PT Astra Sans', Arial;
+}
+
+.nav-logo {
+    height: auto;
+    width: 100%;
+    max-width: 300px;
     object-fit: cover;
-    position: absolute;
-    top: 0;
-    width: 300px;
+    margin-top: -50px;
+    left: 30px;
 }
+.button-auch{
+    width: 150px; /* задайте ширину элемента */
+    height: 40px;
+    position: absolute;
+    top:20px;
+     color:  #163E6C;
+}
+.text-wrapper {
+    width: 150px;
+    height: 40px;
+    top:20px;
+     position: absolute;
+    right:200px;
+    color:  #163E6C;
+  }
 
 
-/*.screen .div {*/
-/*    color: #000000;*/
-/*    font-size: 14px;*/
-/*    font-weight: 400;*/
-/*    left: 106px;*/
-/*    letter-spacing: 0.14px;*/
-/*    line-height: normal;*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*}*/
+@media (max-width: 768px) {
+    .header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .header .screen {
+        margin-top: 40px;
+    }
+
+    .header .group {
+        margin-top: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header .element_1,
+    .header .element {
+        width: 100%;
+    }
+
+    .header .element_1 {
+        margin-bottom: 10px;
+    }
+
+    .nav-logo {
+        width: 150px;
+    }
+
+    .button-auth , .button-auth-link{
+        width: 150px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
