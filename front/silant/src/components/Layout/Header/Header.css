@@ -4,7 +4,7 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: #32629a;
+    background-color: #EBE6D6;
 }
 
 .header .screen {
@@ -26,7 +26,7 @@
     width: 400px;
     height: 50px;
     border-radius: 10px;
-    background-color: #3f63ad;
+    background-color: #EBE6D6;
     color: #090909;
     text-align: center;
     margin: 10px;
@@ -41,12 +41,16 @@
     margin-top: -50px;
     left: 30px;
 }
-.button-auch{
-    width: 150px; /* задайте ширину элемента */
+.group-2{
+    display: flex;
+
+}
+.button-auth, .button-auth-link {
+    width: 150px;
     height: 40px;
-    position: absolute;
-    top:20px;
-     color:  #163E6C;
+    font-size: 14px;
+    display: inline-block;
+    margin-right: 10px; /* adjust the margin as desired */
 }
 .text-wrapper {
     width: 150px;
@@ -54,7 +58,7 @@
     top:20px;
      position: absolute;
     right:200px;
-    color:  #163E6C;
+    color:  #EBE6D6;
   }
 
 

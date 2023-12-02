@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from .models import ProfileUser
 from .serializers import ProfileUserSerializer
+from django.core import serializers
 
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
@@ -15,20 +16,16 @@ class TokenAuthView(ObtainAuthToken):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         token, created = Token.objects.get_or_create(user=user)
-        queryset = ProfileUser.objects.get(user=user.pk)
+        queryset = ProfileUser.objects.get(user=user)
+        company_serialized = serializers.serialize('json', [queryset.company])
         return Response({
             'token': token.key,
             'user_id': user.pk,
             'user_name': user.username,
             'category': queryset.category,
-
-
-
-
+            'company': company_serialized,  # Include serialized company
         })
 
 class ProfileUserViewSet(viewsets.ModelViewSet):
     queryset = ProfileUser.objects.all()
     serializer_class = ProfileUserSerializer
-
-
