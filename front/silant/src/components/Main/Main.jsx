@@ -2,51 +2,33 @@ import React, {useState, useEffect} from 'react';
 import {Table} from "react-bootstrap";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
+import jwtDecode from "jwt-decode"
 
-const Main =  () => {
-    // const [response, setResponse] = useState(null);
-    //  const [users, setUsers] = useState(null);
+const Main = () => {
+    const [response, setResponse] = useState(null);
     const navigate = useNavigate();
     const isAuthenticated = !!localStorage.getItem("token");
 
-   const [username, setUsername] = useState('');
+    const company = localStorage.getItem("company");
+    const category = localStorage.getItem("category");
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-
-    // Раскомментируйте следующую строку, если токен хранит информацию в формате JSON
-    const { name } = JSON.parse(token);
-
-    // Установить имя пользователя в состояние
-    setUsername(name);
-    console.log(name)
-  }, []);
-
-    useEffect(async () => {
-        const userData = async () => {
-            try {
-                const user = await axios.get("http://127.0.0.1:8000/users/");
-                setUsers(user.data);
-                console.log(user);
-            }  catch (error) {
-                console.log(error);
-            }
-        };
-
-        userData();
-    }, []);
-
-
-
-
-
-
+    console.log(localStorage)
 
     useEffect(() => {
+        const token = localStorage.getItem("token");
+        console.log("token");
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/models/");
+                const response = await axios.get("http://127.0.0.1:8000/models/",
+                        {
+                            headers: {
+                                'Content-Type': 'application/json;charset=utf-8',
+                                'Authorization': `Token ${token}`
+                            }
+
+                        }
+                    )
+                ;
                 setResponse(response.data);
                 console.log(response);
             } catch (error) {
@@ -65,13 +47,16 @@ const Main =  () => {
         }
     }, [isAuthenticated, navigate]);
 
+    console.log(localStorage)
+
     return (
         <>
 
             <div className="container">
                 <div className="table-container">
 
-                        <td>{username}</td>
+                    <td> Клиенn \ Сервисная компания: Профель пользователя "{category}" компания "{company}"</td>
+
                     {response && (
                         <Table bordered responsive>
                             <thead>
@@ -111,7 +96,7 @@ const Main =  () => {
                                     <td>{model.addressDelivery}</td>
                                     <td>{model.equipment}</td>
                                     <td>{model.client}</td>
-                                    <td>{model.name}</td>
+                                    <td>{model.modelCar}</td>
                                     <td>{model.modelsEngines}</td>
                                     <td>{model.transmissions}</td>
                                     <td>{model.modelsBridge}</td>

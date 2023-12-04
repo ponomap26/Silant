@@ -10,14 +10,16 @@ class IsClientOrManager(permissions.IsAuthenticated):
         if request.method == 'GET':
             return True
         try:
-            Profile = ProfileUser.objects.get(user_id=request.user.id)
+            Profiles = ProfileUser.objects.get(user_id=request.user.id)
+            print("Profiles")
         except:
             return False
-        if request.method == 'POST' and Profile.сategory == "Manager" or "Client":
+        if request.method == 'POST' and Profiles.сategory == "Manager" or "Client":
+
             return True
-        if request.method == 'PATCH' and Profile.сategory == "Manager" or "Client":
+        if request.method == 'PATCH' and Profiles.сategory == "Manager" or "Client":
             return True
-        if request.method == 'DELETE' and Profile.сategory == "Manager" or "Client":
+        if request.method == 'DELETE' and Profiles.сategory == "Manager" or "Client":
             return True
         # Otherwise, only allow authenticated requests
         # Post Django 1.10, 'is_authenticated' is a read-only attribute

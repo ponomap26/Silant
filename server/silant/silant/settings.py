@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',
-    # 'rest_framework_swagger',
+    'rest_framework_swagger',
     'djoser',
     'corsheaders',
     'silant',
@@ -47,11 +47,8 @@ INSTALLED_APPS = [
     'maintenanceCar',
     "complaints",
 
-
 ]
-
 SITE_ID = 1
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -67,17 +64,15 @@ ACCOUNT_ADAPTER = 'myproject.account.adapter.DefaultAccountAdapter'
 ACCOUNT_ALLOW_SIGNUPS = False
 is_open_for_signup = 'False'
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-        # 'rest_framework.renderers.BrowsableAPIRenderer',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ],
+
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
     ],
+    # "DEFAULT_PERMISSION_CLASSES": [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ]
 }
 
 # SIMPLE_JWT = {

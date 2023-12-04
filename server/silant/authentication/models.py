@@ -37,7 +37,8 @@ class ProfileUser(models.Model):
         (Consignee, "Грузополучатель")
     )
     category = models.CharField(max_length=21, choices=CATEGORY_CHOICES, default=Client, verbose_name="Категория")
-    company = models.ForeignKey(Companies, on_delete=models.PROTECT, verbose_name="Компания")
+    company = models.ForeignKey(Companies, db_index=True, null=True, on_delete=models.PROTECT,
+                                         verbose_name="Компания")
 
     class Meta:
         verbose_name = 'Профиль пользователя'

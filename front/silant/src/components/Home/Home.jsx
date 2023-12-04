@@ -20,7 +20,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/models/");
+        const response = await axios.get("http://127.0.0.1:8000/modelNou/");
         setResponse(response.data);
         console.log(response);
       } catch (error) {
@@ -78,7 +78,7 @@ const Home = () => {
                     <td>{model.dateCreated}</td>
                     <td>{model.dateShipping}</td>
                     <td>{model.equipment}</td>
-                    <td>{model.name}</td>
+                    <td>{model.modelCar}</td>
                     <td>{model.modelsEngines}</td>
                     <td>{model.transmissions}</td>
                     <td>{model.modelsBridge}</td>
