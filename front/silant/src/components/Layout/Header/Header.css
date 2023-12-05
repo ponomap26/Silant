@@ -1,5 +1,5 @@
 .header {
-    padding: 60px;
+    padding: 50px;
     position: relative;
     margin: 0 auto;
     display: flex;
@@ -10,14 +10,13 @@
 .header .screen {
     display: flex;
     align-items: center;
-
     position: relative;
 }
 
-.group, .group-2 {
+.group,
+.group-2 {
     display: flex;
     justify-content: center;
-
 }
 
 .element_1,
@@ -41,26 +40,29 @@
     margin-top: -50px;
     left: 30px;
 }
-.group-2{
-    display: flex;
 
+.group-2 {
+    display: flex;
 }
-.button-auth, .button-auth-link {
+
+.button-auth,
+.button-auth-link {
     width: 150px;
     height: 40px;
     font-size: 14px;
     display: inline-block;
-    margin-right: 10px; /* adjust the margin as desired */
+    background-color: #163E6C;
+    margin-right: 100px;
 }
+
 .text-wrapper {
     width: 150px;
     height: 40px;
-    top:20px;
-     position: absolute;
-    right:200px;
-    color:  #EBE6D6;
-  }
-
+    top: 20px;
+    position: absolute;
+    right: 200px;
+    color: #EBE6D6;
+}
 
 @media (max-width: 768px) {
     .header {
@@ -92,9 +94,11 @@
         width: 150px;
     }
 
-    .button-auth , .button-auth-link{
+    .button-auth,
+    .button-auth-link {
         width: 150px;
         height: 40px;
         font-size: 14px;
+
     }
 }

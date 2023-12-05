@@ -4,10 +4,21 @@ from .models import CarMaintenance
 
 
 class CarMaintenanceInfoLoadersSerializer(serializers.ModelSerializer):
+    Number = serializers.CharField(source='Number.numberFactory', max_length=128)
+    carTo = serializers.CharField(source='carTo.maintenance', max_length=128)
+    carToDe = serializers.CharField(source='carTo.description', max_length=128)
+
     class Meta:
         model = CarMaintenance
-        fields = '__all__'
-
+        fields = [
+            'Number',
+            'carTo',
+            'carToDe',
+            'dataTo',
+            'operatingTime',
+            'order_outfit',
+            'data_order_outfit',
+        ]
 
 # @swagger_auto_schema(
 #     operation_description="Описание модели пользователя",

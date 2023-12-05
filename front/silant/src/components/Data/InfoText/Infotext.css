@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    margin-top: -100px;;
+    margin-top: -320px;
     max-width: 1800px;
     margin-left: 50px; /* Отступ слева на 50px */
     margin-right: 50px;
@@ -21,6 +21,7 @@
     align-items: center;
     margin-bottom: 20px;
     padding: 10px;
+    border-radius:5px;
 
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Добавленная тень */
 }
@@ -37,6 +38,7 @@
     margin-bottom: 20px;
     font-size: 18px;
     padding: 10px;
+    border-radius:5px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Добавленная тень */
 }
 
@@ -58,12 +60,21 @@
     font-size: 18px;
     height: 50px;
     width: 400px;
+    background-color: #163E6C;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Добавленная тень */
 }
+.button-to.active,
+.button-rec.active,
+.button-gen.active {
+    /*margin: 0 20px;*/
+    /*font-size: 18px;*/
+    /*height: 50px;*/
+    /*width: 400px;*/
 
-.table-data {
-    width: 100%;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Добавленная тень */
+    background-color: #011934; /* Изменение цвета при активном состоянии */
+    color: #ffffff; /* Изменение цвета текста на белый (если нужно) */
+    /* Дополнительные стили для активной кнопки */
+    /*box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);*/
 }
 
 .additional-text {

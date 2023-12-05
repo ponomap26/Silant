@@ -5,7 +5,7 @@ from logicsCars.models import ModelCar
 
 
 class CarTo(models.Model):
-    maintenance = models.CharField(max_length=128, blank=True, verbose_name="Вид ТО")
+    maintenance = models.CharField(max_length=128, verbose_name="Вид ТО")
     description = models.TextField(blank=True, verbose_name="Описание")
 
     class Meta:
@@ -18,7 +18,7 @@ class CarTo(models.Model):
 
 class CarMaintenance(models.Model):
     Number = models.ForeignKey(ModelCar, on_delete=models.PROTECT, to_field='numberFactory')
-    carTo = models.ForeignKey(CarTo, on_delete=models.PROTECT,  verbose_name="Вид ТО")
+    carTo = models.ForeignKey(CarTo, on_delete=models.PROTECT,  verbose_name="Вид ТО", related_name='children')
     dataTo = models.DateField(db_index=True, verbose_name="Дата проведения ТО")
     operatingTime = models.CharField(max_length=128, blank=True, verbose_name="Наработка")
     order_outfit = models.CharField(max_length=128, blank=True, verbose_name="Номер заказ наряда")
