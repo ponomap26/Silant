@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: -100px;;
+    max-width: 1800px;
+    margin-left: 50px; /* Отступ слева на 50px */
+    margin-right: 50px;
+
+}
+
+.table-container {
+    width: calc(100% - 100px); /* Уменьшение ширины на 100px для отступа от боковин */
+    /* Отступ справа на 50px */
+}
+
+.category-company {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Добавленная тень */
+}
+
+.category-company h1 {
+    padding: 40px;
+    font-size: 22px;
+}
+
+.category-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    padding: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Добавленная тень */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.button-to,
+.button-rec,
+.button-gen {
+    margin: 0 20px; /* Изменено расстояние между кнопками */
+    font-size: 18px;
+    height: 50px;
+    width: 400px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Добавленная тень */
+}
+
+.table-data {
+    width: 100%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Добавленная тень */
+}
+
+.additional-text {
+    text-align: center; /* Добавленное выравнивание текста */
+    margin-bottom: 20px; /* Добавленный отступ снизу */
+}
+
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-to,
+    .button-rec,
+    .button-gen {
+        margin: 10px 0;
+    }
+}

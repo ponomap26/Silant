@@ -60,9 +60,9 @@ const Home = () => {
             <Table bordered responsive>
               <thead>
                 <tr>
+                  <th>Mодель</th>
                   <th>Number of Factory</th>
                   <th>Date Created</th>
-                  <th>Date Shipping</th>
                   <th>Equipment</th>
                   <th>Name</th>
                   <th>Model of Engines</th>
@@ -74,9 +74,9 @@ const Home = () => {
               <tbody>
                 {response.map((model) => (
                   <tr key={model.id}>
+                    <td>{model.modelCar}</td>
                     <td>{model.numberFactory}</td>
                     <td>{model.dateCreated}</td>
-                    <td>{model.dateShipping}</td>
                     <td>{model.equipment}</td>
                     <td>{model.modelCar}</td>
                     <td>{model.modelsEngines}</td>

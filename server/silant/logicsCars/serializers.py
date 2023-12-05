@@ -3,7 +3,7 @@ from .models import ModelCar, BridgeSteerable, Bridge
 
 class ModelCarSerializer(serializers.ModelSerializer):
     modelCar = serializers.CharField(source='modelCar.modelsCar', max_length=128)
-    # nameDe = serializers.CharField(source='name.descript', max_length=128)
+    modelCarDe = serializers.CharField(source='modelCar.description', max_length=128)
     modelsEngines = serializers.CharField(source='modelsEngines.modelEngines', max_length=128)
     transmissions = serializers.CharField(source='transmissions.modelTransmission', max_length=128)
     serviceCompanies = serializers.CharField(source='serviceCompanies.name', max_length=128)
@@ -17,7 +17,8 @@ class ModelCarSerializer(serializers.ModelSerializer):
         model = ModelCar
         fields = [
             'modelCar',
-
+            'equipment',
+            'modelCarDe',
             'numberFactory',
             'modelsEngines',
             'numberEngines',
@@ -42,7 +43,7 @@ class ModelCarSerializer(serializers.ModelSerializer):
 
 class ModelCarNouSerializer(serializers.ModelSerializer):
     modelCar = serializers.CharField(source='modelCar.modelsCar', max_length=128)
-    # nameDe = serializers.CharField(source='name.descript', max_length=128)
+    modelCarDe = serializers.CharField(source='modelCar.description', max_length=128)
     modelsEngines = serializers.CharField(source='modelsEngines.modelEngines', max_length=128)
     transmissions = serializers.CharField(source='transmissions.modelTransmission', max_length=128)
 
@@ -54,7 +55,8 @@ class ModelCarNouSerializer(serializers.ModelSerializer):
     class Meta:
         model = ModelCar
         fields = ['modelCar',
-
+                  'modelCarDe',
+                  'equipment',
                   'numberFactory',
                   'modelsEngines',
                   'numberEngines',

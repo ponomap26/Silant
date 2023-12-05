@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {Table} from "react-bootstrap";
+import {Button, Table} from "react-bootstrap";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
-import jwtDecode from "jwt-decode"
+import "./Main.css"
 
 const Main = () => {
     const [response, setResponse] = useState(null);
@@ -48,17 +48,46 @@ const Main = () => {
     }, [isAuthenticated, navigate]);
 
     console.log(localStorage)
+    const handleTechnicalMaintenanceClick = () => {
+        navigate('/technical-maintenance');
+    };
 
+    const handleComplaintClick = () => {
+        navigate('/complaint');
+    };
+    const handleGenralClick = () => {
+        navigate('/main');
+    };
     return (
         <>
-
             <div className="container">
                 <div className="table-container">
+                    <div className="category-company">
+                        <h1>Категория - "{category}"</h1>
+                        <h1>Компания - "{company}"</h1>
+                    </div>
+                    <div className="category-text">
+                        <p>Информация о комплектации и техническом обслуживании вашей техники</p>
 
-                    <td> Клиенn \ Сервисная компания: Профель пользователя "{category}" компания "{company}"</td>
+                    </div>
+
+
+                    <div className="button-container">
+                        <Button className="button-gen" onClick={handleGenralClick}>
+                            Общая информация
+                        </Button>
+                        <Button className="button-to" onClick={handleTechnicalMaintenanceClick}>
+                            Техническое обслуживание
+                        </Button>
+                        <Button className="button-rec" onClick={handleComplaintClick}>
+                            Рекламация
+                        </Button>
+
+                    </div>
+
 
                     {response && (
-                        <Table bordered responsive>
+                        <Table  className='table-data' bordered responsive>
                             <thead>
                             <tr>
                                 <th>Number of Factory</th>

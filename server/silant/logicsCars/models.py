@@ -5,6 +5,7 @@ from authentication.models import Companies, ServisCompanies
 
 class ModelsLoader(models.Model):
     modelsCar = models.CharField(max_length=128, verbose_name='Название Модели ')
+    description = models.TextField(blank=False,  verbose_name='Описание')
 
 
 
