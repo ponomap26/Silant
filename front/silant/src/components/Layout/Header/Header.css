@@ -35,7 +35,7 @@
 .nav-logo {
     height: auto;
     width: 100%;
-    max-width: 300px;
+    max-width: 300px; /* Уменьшите максимальную ширину для более плавного изменения размера */
     object-fit: cover;
     margin-top: -50px;
     left: 30px;
@@ -91,7 +91,8 @@
     }
 
     .nav-logo {
-        width: 150px;
+        width: 200px; /* Измените ширину логотипа для более плавного изменения размера */
+        max-width: 100%; /* Добавьте максимальную ширину 100% для адаптивности */
     }
 
     .button-auth,
@@ -99,6 +100,5 @@
         width: 150px;
         height: 40px;
         font-size: 14px;
-
     }
 }
