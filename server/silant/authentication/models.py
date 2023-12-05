@@ -14,7 +14,7 @@ class Companies(models.Model):
 
 
 class ServisCompanies(models.Model):
-    name = models.CharField(max_length=128)
+    name = models.ForeignKey(Companies, on_delete=models.PROTECT, max_length=128)
 
     class Meta:
         verbose_name = "Сервисная компания"
