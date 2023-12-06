@@ -7,7 +7,8 @@ import Home from "../Home/Home.jsx";
 import Layout from "../Layout/Layout.jsx";
 import Main from "../Data/Main/Main.jsx";
 import Complainsts from "../Data/Complaints/Complaints.jsx";
-import Maintenance from "../Data/Maintenance/Maintenance";
+import Maintenance from "../Data/Maintenance/Maintenance.jsx";
+import Forms from "../Data/Main/Form/Forms.jsx";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/complaint" element={<Complainsts />}/>
                     <Route path="/maintenance" element={<Maintenance/>}/>
                     <Route path="/login" element={<Auth/>}/>
+                    <Route path="/forms" element={<Forms/>}/>
                 </Route>
 
             </Routes>

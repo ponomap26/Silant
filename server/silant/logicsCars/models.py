@@ -5,9 +5,7 @@ from authentication.models import Companies, ServisCompanies
 
 class ModelsLoader(models.Model):
     modelsCar = models.CharField(max_length=128, verbose_name='Название Модели ')
-    description = models.TextField(blank=False,  verbose_name='Описание')
-
-
+    description = models.TextField(blank=True, verbose_name='Описание')
 
     class Meta:
         verbose_name = 'модель Погрузчик'
@@ -19,7 +17,7 @@ class ModelsLoader(models.Model):
 
 class Engines(models.Model):
     modelEngines = models.CharField(max_length=128, verbose_name='Двигатель')
-    description = models.TextField(blank=False,  verbose_name='Описание')
+    description = models.TextField(blank=True, verbose_name='Описание')
 
     class Meta:
         verbose_name = 'Двигатель'
@@ -42,9 +40,8 @@ class Transmission(models.Model):
 
 
 class Bridge(models.Model):
-
     modelBridge = models.CharField(max_length=128, verbose_name='Ведуший мост')
-    description = models.TextField(blank=True, verbose_name='Описание')
+    description = models.TextField(verbose_name='Описание')
 
     class Meta:
         verbose_name = 'Ведущей мост'
@@ -70,7 +67,7 @@ class ModelCar(models.Model):
     """Model Погрузчика"""
 
     modelCar = models.ForeignKey(ModelsLoader, on_delete=models.PROTECT, db_index=True, max_length=117,
-                             verbose_name='Название')
+                                 verbose_name='Название')
     numberFactory = models.CharField(unique=True, max_length=117, db_index=True, verbose_name="Заводской номер")
     modelsEngines = models.ForeignKey(Engines, on_delete=models.PROTECT, db_index=True, verbose_name='Модель двигателя',
                                       related_name='children')
@@ -81,7 +78,7 @@ class ModelCar(models.Model):
     numberTransmissions = models.CharField(max_length=128, db_index=True, verbose_name='Номер трансмиссии')
     modelsBridge = models.ForeignKey(Bridge, on_delete=models.PROTECT, db_index=True,
                                      verbose_name='Модель Ведущего моста')
-    numberBridge = models.CharField(max_length=128, db_index=True, verbose_name='Номер Ведущего моста', )
+    numberBridge = models.CharField(max_length=128, db_index=True, verbose_name='Номер Ведущего моста')
     modelsBridgeSteerable = models.ForeignKey(BridgeSteerable, on_delete=models.PROTECT, db_index=True,
                                               verbose_name='Модель управляемого моста')
     numberBridgeSteerable = models.CharField(max_length=128, db_index=True, verbose_name='Номер управляемого моста')
@@ -93,7 +90,7 @@ class ModelCar(models.Model):
     equipment = models.TextField(db_index=True, verbose_name='Комплектация')
     client = models.ForeignKey(Companies, db_index=True, on_delete=models.PROTECT, null=True, verbose_name="Клиент")
     serviceCompanies = models.ForeignKey(ServisCompanies, db_index=True, null=True, on_delete=models.PROTECT,
-                                         verbose_name='Сервисная компания')
+                                         verbose_name="Сервисная компания")
 
     def __str__(self):
         return f'{self.modelCar} Зав № {self.numberFactory}'

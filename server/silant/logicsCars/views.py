@@ -14,22 +14,23 @@ class ModelCarNoAuthViewSet(viewsets.ModelViewSet):
 
 class ModelCarViewSet(viewsets.ModelViewSet):
     serializer_class = ModelCarSerializer
+    queryset = ModelCar.objects.all()
 
-    def get_queryset(self):
-        user = self.request.user
-
-        if user.is_authenticated:
-            profile = ProfileUser.objects.filter(user=user).first()
-            if profile.category == "Менеджер":
-                return ModelCar.objects.all()
-            elif profile.category == "Сервисная организация":
-
-                return ModelCar.objects.filter(serviceCompanies__name__name=profile.company)
-            else:
-                return ModelCar.objects.filter(client=profile.company)
-        else:
-            return ModelCar.objects.none()
-
-
-        return queryset
+    # def get_queryset(self):
+    #     user = self.request.user
+    #
+    #     if user.is_authenticated:
+    #         profile = ProfileUser.objects.filter(user=user).first()
+    #         if profile.category == "Менеджер":
+    #             return ModelCar.objects.all()
+    #         elif profile.category == "Сервисная организация":
+    #
+    #             return ModelCar.objects.filter(serviceCompanies__name__name=profile.company)
+    #         else:
+    #             return ModelCar.objects.filter(client=profile.company)
+    #     else:
+    #         return ModelCar.objects.none()
+    #
+    #
+    #     return queryset
 

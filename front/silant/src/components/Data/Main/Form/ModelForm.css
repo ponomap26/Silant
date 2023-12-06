@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Два столбца */
+    grid-gap: 10px; /* Отступ между элементами */
+}
+
+.form-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Распределение между столбцами */
+}
+
+.form-column {
+    flex-basis: calc(50% - 10px); /* Ширина каждого столбца (минус отступы) */
+    padding: 10px;
+}
+
+.form-label {
+    grid-column: span 2; /* Занимает оба столбца */
+}

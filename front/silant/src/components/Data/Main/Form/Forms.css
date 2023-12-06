@@ -1,0 +1,44 @@
+.form-container {
+  max-width: 400px; /* Ширина формы */
+  margin: 0 auto; /* Расположение по центру */
+  padding: 20px; /* Внутренние отступы */
+  border: 1px solid #e0e0e0; /* Граница формы */
+  border-radius: 5px; /* Скругленные углы */
+  background-color: #f9f9f9; /* Цвет фона */
+}
+
+/* Стили для каждого поля формы */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Стили для кнопки отправки формы */
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}

@@ -1,35 +1,28 @@
+import {Button, Form, Table} from "react-bootstrap";
 import React, {useState, useEffect} from 'react';
-import {Button, Table} from "react-bootstrap";
-import axios from "axios";
 import {useNavigate} from "react-router-dom";
-import "./Main.css"
 import Infotext from "../InfoText/Infotext.jsx";
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.css";
 
 const Main = () => {
-    const [response, setResponse] = useState(null);
+    const [response, setResponse] = useState([]);
+    const [editingId, setEditingId] = useState(null);
     const navigate = useNavigate();
     const isAuthenticated = !!localStorage.getItem("token");
 
-
-    console.log(localStorage)
-
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        console.log("token");
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/models/",
-                        {
-                            headers: {
-                                'Content-Type': 'application/json;charset=utf-8',
-                                'Authorization': `Token ${token}`
-                            }
-
-                        }
-                    )
-                ;
+                const token = localStorage.getItem("token");
+                const response = await axios.get("http://127.0.0.1:8000/models/", {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Token ${token}`
+                    }
+                });
                 setResponse(response.data);
-                console.log(response);
+                console.log(response.data);
             } catch (error) {
                 console.log(error);
             }
@@ -38,24 +31,59 @@ const Main = () => {
         fetchData();
     }, []);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/main');
-    } else {
-      navigate('/login');
-    }
-  }, [isAuthenticated, navigate]);
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/main');
+        } else {
+            navigate('/login');
+        }
+    }, [isAuthenticated, navigate]);
 
-    console.log(localStorage)
+    const handleEdit = (id) => {
+        setEditingId(id);
+    };
+
+    const handleSave = async (id, updatedModel) => {
+        try {
+            const token = localStorage.getItem("token");
+            const updatedResponse = await axios.patch(`http://127.0.0.1:8000/models/${id}/`, updatedModel, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`
+                }
+            });
+            setResponse(prevResponse => {
+                const updatedData = prevResponse.map(model => {
+                    if (model.id === id) {
+                        return updatedResponse.data;
+                    }
+                    return model;
+                });
+                return updatedData;
+            });
+            setEditingId(null);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleInputChange = (id, field, value) => {
+        const updatedData = response.map(model => {
+            if (model.id === id) {
+                return {...model, [field]: value};
+            }
+            return model;
+        });
+        setResponse(updatedData);
+    };
 
     return (
         <>
-
-            <Infotext />
-            <div className="container" style={{ marginTop: "-600px" }}>
+            <Infotext/>
+            <div className="container" style={{marginTop: "-600px"}}>
                 <div className="table-container">
-                    {response && (
-                        <Table className='table-data' bordered responsive>
+                    {response.length > 0 && (
+                        <Table className="table-data" bordered responsive>
                             <thead>
                             <tr>
                                 <th>Number of Factory</th>
@@ -81,24 +109,79 @@ const Main = () => {
                             <tbody>
                             {response.map((model) => (
                                 <tr key={model.id}>
-                                    <td>{model.numberFactory}</td>
-                                    <td>{model.numberEngines}</td>
-                                    <td>{model.date_created}</td>
-                                    <td>{model.numberTransmissions}</td>
-                                    <td>{model.numberBridge}</td>
-                                    <td>{model.numberBridgeSteerable}</td>
-                                    <td>{model.contractSupply}</td>
-                                    <td>{model.dateShipping}</td>
-                                    <td>{model.consignee}</td>
-                                    <td>{model.addressDelivery}</td>
-                                    <td>{model.equipment}</td>
-                                    <td>{model.client}</td>
-                                    <td>{model.modelCar}</td>
-                                    <td>{model.modelsEngines}</td>
-                                    <td>{model.transmissions}</td>
-                                    <td>{model.modelsBridge}</td>
-                                    <td>{model.modelsBridgeSteerable}</td>
-                                    <td>{model.serviceCompanies}</td>
+                                    <td>
+                                        {editingId === model.id ? (
+                                            <Form.Control
+                                                type="text"
+                                                value={model.numberFactory}
+                                                onChange={(e) => handleInputChange(model.id, 'numberFactory', e.target.value)}
+                                            />
+                                        ) : (
+                                            model.numberFactory
+                                        )}
+                                    </td>
+                                    <td>
+                                        {editingId === model.id ? (
+                                            <Form.Control
+                                                type="text"
+                                                value={model.numberEngines}
+                                                onChange={(e) => handleInputChange(model.id, 'numberEngines', e.target.value)}
+                                            />
+                                        ) : (
+                                            model.numberEngines
+                                        )}
+                                    </td>
+                                    <td>
+                                        {editingId === model.id ? (
+                                            <Form.Control
+                                                type="text"
+                                                value={model.dateCreated}
+                                                onChange={(e) => handleInputChange(model.id, 'dateCreated', e.target.value)}
+                                            />
+                                        ) : (
+                                            model.dateCreated
+                                        )}
+                                    </td>
+                                    <td>
+                                        {editingId === model.id ? (
+                                            <Form.Control
+                                                type="text"
+                                                value={model.dateShipping}
+                                                onChange={(e) => handleInputChange(model.id, 'dateShipping', e.target.value)}
+                                            />
+                                        ) : (
+                                            model.dateShipping
+                                        )}
+                                    </td>
+                                    {/* Add other table cells */}
+                                    <td>
+                                        <td>
+                                        {editingId === model.id ? (
+                                            <Form.Control
+                                                type="text"
+                                                value={model.equipment}
+                                                onChange={(e) => handleInputChange(model.id, 'equipment', e.target.value)}
+                                            />
+                                        ) : (
+                                            model.equipment
+                                        )}
+                                    </td>
+                                        {editingId === model.id ? (
+                                            <Button
+                                                variant="success"
+                                                onClick={() => handleSave(model.id, model)}
+                                            >
+                                                Save
+                                            </Button>
+                                        ) : (
+                                            <Button
+                                                variant="primary"
+                                                onClick={() => handleEdit(model.id)}
+                                            >
+                                                Edit
+                                            </Button>
+                                        )}
+                                    </td>
                                 </tr>
                             ))}
                             </tbody>
