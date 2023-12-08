@@ -4,12 +4,17 @@ import {useNavigate} from "react-router-dom";
 import Infotext from "../InfoText/Infotext.jsx";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
+import filterFactory, {textFilter} from "react-bootstrap-table2-filter";
+import BootstrapTable from 'react-bootstrap-table-next';
+import Modal from "react-modal";
+import {GoArrowDown, GoArrowUp} from "react-icons/go";
 
 const Main = () => {
-    const [response, setResponse] = useState([]);
-    const [editingId, setEditingId] = useState(null);
     const navigate = useNavigate();
-    const isAuthenticated = !!localStorage.getItem("token");
+    const isAuthenticated = !!localStorage.getItem('token');
+    const [response, setResponse] = useState([]);
+    const [selectedNodeFailure, setSelectedNodeFailure] = useState(null);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,7 +27,7 @@ const Main = () => {
                     }
                 });
                 setResponse(response.data);
-                console.log(response.data);
+                console.log(response);
             } catch (error) {
                 console.log(error);
             }
@@ -67,6 +72,172 @@ const Main = () => {
         }
     };
 
+
+    const columns = [
+        {
+            dataField: 'modelCar',
+            text: 'Модель техники',
+            filter: textFilter({
+
+                className: 'my-custom-text-filter', // custom classname on input
+
+            }),
+            formatter: (cell, row) => (
+                <button onClick={() => modelCarClick(row, response)}>{cell}</button>
+            )
+
+        },
+        {
+            dataField: 'numberFactory',
+            text: 'Заводской номер',
+            filter: textFilter(),
+            sort: true,
+            sortCaret: (order, column) => {
+                if (order === 'asc') {
+                    return <GoArrowUp/>;
+                }
+                if (order === 'desc') {
+                    return <GoArrowDown/>;
+                }
+                return null;
+            },
+
+
+        },
+        {
+            dataField: 'modelsEngines',
+            text: 'Модель двигателя',
+            filter: textFilter(),
+            formatter: (cell, row) => (
+                <button onClick={() => modelsEnginesClick(row, response)}>{cell}</button>
+            )
+        },
+        {
+            dataField: 'numberEngines',
+            text: 'Зав № двигателя',
+            filter: textFilter()
+        },
+
+        {
+            dataField: 'transmissions',
+            text: 'Модель трансмиссии (производитель, артикул)',
+            filter: textFilter(),
+            formatter: (cell, row) => (
+                <button onClick={() => transmissionsClick(row, response)}>{cell}</button>
+            )
+        },
+        {
+            dataField: 'numberTransmissions',
+            text: 'Зав. № трансмиссии',
+            filter: textFilter(),
+
+        },
+        {
+            dataField: 'modelsBridge',
+            text: 'Модель ведущего моста',
+            filter: textFilter(),
+            formatter: (cell, row) => (
+                <button onClick={() => modelsBridgeyClick(row, response)}>{cell}</button>
+            )
+        },
+        {
+            dataField: 'numberBridge',
+            text: 'Зав. №  ведущего моста',
+            filter: textFilter(),
+            formatter: (cell, row) => (
+                <div>
+                    <span>{cell}</span>
+                    <button onClick={() => handleModelCarEdit(row.id)}>Edit</button>
+                </div>
+            )
+        },
+        {
+            dataField: 'modelsBridgeSteerable',
+            text: 'Модель управляемого моста',
+            filter: textFilter(),
+            formatter: (cell, row) => (
+                <button onClick={() => modelsBridgeSteerableClick(row, response)}>{cell}</button>
+            )
+        },
+        {
+            dataField: 'dateShipping',
+            text: 'Дата отгрузки с завода',
+            filter: textFilter(),
+
+        },
+        {
+            dataField: 'consignee',
+            text: 'Получатель',
+            filter: textFilter(),
+
+        },
+        {
+            dataField: 'client',
+            text: 'Грузополучатель(конечный потребитель)',
+            filter: textFilter(),
+
+        },
+        {
+            dataField: 'addressDelivery',
+            text: 'Адрес поставки',
+            filter: textFilter(),
+
+        },
+
+        {
+            dataField: 'equipment',
+            text: 'Комплектация',
+            filter: textFilter(),
+
+        },
+        {
+            dataField: 'serviceCompanies',
+            text: 'Сервисная компания',
+            filter: textFilter(),
+
+        },
+        {
+            dataField: 'numberBridgeSteerable',
+            text: 'Зав. №  управляемого моста',
+            filter: textFilter(),
+
+        },
+
+
+    ];
+    const modelCarClick = (row) => {
+
+        setSelectedNodeFailure(row.modelCarDe);
+        setModalIsOpen(true);
+    };
+
+    const modelsEnginesClick = (row) => {
+
+        setSelectedNodeFailure(row.modelsEnginesDe);
+        setModalIsOpen(true);
+    };
+    const transmissionsClick = (row) => {
+
+        setSelectedNodeFailure(row.transmissionsDE);
+        setModalIsOpen(true);
+    };
+
+    const modelsBridgeyClick = (row) => {
+
+        setSelectedNodeFailure(row.modelsBridgeDe);
+        setModalIsOpen(true);
+    };
+    const modelsBridgeSteerableClick = (row) => {
+
+        setSelectedNodeFailure(row.modelsBridgeSteerableDe);
+        setModalIsOpen(true);
+    };
+
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
+
     const handleInputChange = (id, field, value) => {
         const updatedData = response.map(model => {
             if (model.id === id) {
@@ -82,113 +253,30 @@ const Main = () => {
             <Infotext/>
             <div className="container" style={{marginTop: "-600px"}}>
                 <div className="table-container">
-                    {response.length > 0 && (
-                        <Table className="table-data" bordered responsive>
-                            <thead>
-                            <tr>
-                                <th>Number of Factory</th>
-                                <th>Number of Engines</th>
-                                <th>Date Created</th>
-                                <th>Number of Transmissions</th>
-                                <th>Number of Bridge</th>
-                                <th>Number of Steerable Bridge</th>
-                                <th>Contract Supply</th>
-                                <th>Date Shipping</th>
-                                <th>Consignee</th>
-                                <th>Address Delivery</th>
-                                <th>Equipment</th>
-                                <th>Client</th>
-                                <th>Name</th>
-                                <th>Model of Engines</th>
-                                <th>Transmission</th>
-                                <th>Model of Bridge</th>
-                                <th>Model of Steerable Bridge</th>
-                                <th>Service Companies</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {response.map((model) => (
-                                <tr key={model.id}>
-                                    <td>
-                                        {editingId === model.id ? (
-                                            <Form.Control
-                                                type="text"
-                                                value={model.numberFactory}
-                                                onChange={(e) => handleInputChange(model.id, 'numberFactory', e.target.value)}
-                                            />
-                                        ) : (
-                                            model.numberFactory
-                                        )}
-                                    </td>
-                                    <td>
-                                        {editingId === model.id ? (
-                                            <Form.Control
-                                                type="text"
-                                                value={model.numberEngines}
-                                                onChange={(e) => handleInputChange(model.id, 'numberEngines', e.target.value)}
-                                            />
-                                        ) : (
-                                            model.numberEngines
-                                        )}
-                                    </td>
-                                    <td>
-                                        {editingId === model.id ? (
-                                            <Form.Control
-                                                type="text"
-                                                value={model.dateCreated}
-                                                onChange={(e) => handleInputChange(model.id, 'dateCreated', e.target.value)}
-                                            />
-                                        ) : (
-                                            model.dateCreated
-                                        )}
-                                    </td>
-                                    <td>
-                                        {editingId === model.id ? (
-                                            <Form.Control
-                                                type="text"
-                                                value={model.dateShipping}
-                                                onChange={(e) => handleInputChange(model.id, 'dateShipping', e.target.value)}
-                                            />
-                                        ) : (
-                                            model.dateShipping
-                                        )}
-                                    </td>
-                                    {/* Add other table cells */}
-                                    <td>
-                                        <td>
-                                        {editingId === model.id ? (
-                                            <Form.Control
-                                                type="text"
-                                                value={model.equipment}
-                                                onChange={(e) => handleInputChange(model.id, 'equipment', e.target.value)}
-                                            />
-                                        ) : (
-                                            model.equipment
-                                        )}
-                                    </td>
-                                        {editingId === model.id ? (
-                                            <Button
-                                                variant="success"
-                                                onClick={() => handleSave(model.id, model)}
-                                            >
-                                                Save
-                                            </Button>
-                                        ) : (
-                                            <Button
-                                                variant="primary"
-                                                onClick={() => handleEdit(model.id)}
-                                            >
-                                                Edit
-                                            </Button>
-                                        )}
-                                    </td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </Table>
-                    )}
+                    <BootstrapTable ClassName="customTable"
+                                    data={response}
+                                    keyField='id'
+                                    columns={columns}
+                                    filter={filterFactory()}
+                    />
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        contentLabel="Node Failure Modal"
+                    >
+                        <h2>ОПИСАНИЕ</h2>
+                        {selectedNodeFailure && <p>{selectedNodeFailure}</p>}
+                        <button onClick={closeModal}>Закрыть</button>
+                    </Modal>
+                    <Form.Control
+                        type="text"
+                        value={cell}
+                        onChange={(e) => handleInputChange(row.id, 'numberBridge', e.target.value)}
+                    />
                 </div>
             </div>
+
+
         </>
     );
 };

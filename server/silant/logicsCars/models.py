@@ -17,7 +17,7 @@ class ModelsLoader(models.Model):
 
 class Engines(models.Model):
     modelEngines = models.CharField(max_length=128, verbose_name='Двигатель')
-    description = models.TextField(blank=True, verbose_name='Описание')
+    description = models.TextField(blank=False, verbose_name='Описание')
 
     class Meta:
         verbose_name = 'Двигатель'
@@ -29,7 +29,7 @@ class Engines(models.Model):
 
 class Transmission(models.Model):
     modelTransmission = models.CharField(max_length=128, verbose_name='Трансмисия')
-    description = models.TextField(blank=True, verbose_name='Описание')
+    description = models.TextField(blank=False, verbose_name='Описание')
 
     class Meta:
         verbose_name = 'Трансмисия'
@@ -98,3 +98,12 @@ class ModelCar(models.Model):
     class Meta:
         verbose_name = 'Погрузчик'
         verbose_name_plural = 'Погрузчики'
+
+
+# class Погрузчик(models.Model):
+#     мodelSteerable = models.CharField(max_length=128, verbose_name='Управляемый мост')
+#     description = models.TextField(blank=False, verbose_name='Описание')
+#
+#     class Meta:
+#         verbose_name = 'Управляемый мост'
+#         verbose_name_plural = 'Управляемый мост'

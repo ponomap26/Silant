@@ -9,6 +9,7 @@ class Companies(models.Model):
         verbose_name = "компания"
         verbose_name_plural = 'компания'
 
+
     def __str__(self):
         return f'{self.name}'
 

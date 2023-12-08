@@ -89,7 +89,7 @@ const Maintenance = () => {
         onHide={() => setShowModal(false)}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Заголовок модального окна</Modal.Title>
+          <Modal.Title>Проведенные мероприятия</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {/* Отобразите данные из `modalData` */}

@@ -1,32 +1,38 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import Infotext from "../InfoText/Infotext";
+import BootstrapTable from 'react-bootstrap-table-next';
 
+import filterFactory, {textFilter} from 'react-bootstrap-table2-filter';
+import Modal from 'react-modal';
+import "./Complainsts.css"
+import {GoArrowDown, GoArrowUp} from "react-icons/go"
 
-const Complainsts = () => {
-  const navigate = useNavigate();
-  const isAuthenticated = !!localStorage.getItem('token');
+const Complaints = () => {
+    const navigate = useNavigate();
+    const isAuthenticated = !!localStorage.getItem('token');
+    const [response, setResponse] = useState([]);
+    const [selectedNodeFailure, setSelectedNodeFailure] = useState(null);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/complaint');
+        } else {
+            navigate('/login');
+        }
+    }, [isAuthenticated, navigate]);
 
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/complaint');
-    } else {
-      navigate('/login');
-    }
-  }, [isAuthenticated, navigate]);
-  useEffect(() => {
-        const token = localStorage.getItem("token");
-        console.log("token");
-        const fetchDataTO = async () => {
+    useEffect(() => {
+        const fetchData = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8000//maintence/", {
+                const token = localStorage.getItem("token");
+                const response = await axios.get("http://127.0.0.1:8000/complaints/", {
                     headers: {
-                        Authorization: `Bearer ${token}`
+                        'Content-Type': 'application/json',
+                        'Authorization': `Token ${token}`
                     }
-
                 });
                 setResponse(response.data);
                 console.log(response);
@@ -35,12 +41,128 @@ const Complainsts = () => {
             }
         };
 
-        fetchDataTO();
+        fetchData();
     }, []);
 
-  return (
-      <Infotext />
-  )
+    const columns = [
+        {
+            dataField: 'carNumber',
+            text: 'Зав № машины',
+            filter: textFilter()
+        },
+        {
+            dataField: 'dataRecovery',
+            text: 'Дата отказа',
+            filter: textFilter(),
+            sort: true,
+            sortCaret: (order, column) => {
+                if (order === 'asc') {
+                    return <GoArrowUp/>;
+                }
+                if (order === 'desc') {
+                    return <GoArrowDown/>;
+                }
+                return null;
+            },
+
+        },
+
+
+        {
+            dataField: 'operatingTime',
+            text: 'Наработка, м/час',
+            filter: textFilter()
+        },
+        {
+            dataField: 'nodeFailure',
+            text: 'Узел отказа',
+            filter: textFilter(),
+            formatter: (cell, row) => (
+                <button onClick={() => handleNodeFailureClick(row, response)}>{cell}</button>
+            )
+        },
+        {
+            dataField: 'descriptionFailure',
+            text: 'Описание отказа',
+            filter: textFilter()
+        },
+        {
+            dataField: 'metodRecovery',
+            text: 'Способ восстановления',
+            filter: textFilter(),
+            formatter: (cell, row) => (
+                <button onClick={() => handlemetodRecoveryClick(row, response)}>{cell}</button>
+            )
+        },
+        {
+            dataField: 'partSpare',
+            text: 'Используемые запасные части',
+            filter: textFilter()
+        },
+
+
+        {
+            dataField: 'downtime',
+            text: 'Время простоя',
+            filter: textFilter()
+        },
+
+
+        {
+            dataField: 'componyServisor',
+            text: 'Сервисная компания',
+            filter: textFilter()
+        },
+
+    ];
+
+    const handleNodeFailureClick = (row) => {
+
+        setSelectedNodeFailure(row.nodeFailureDE);
+        setModalIsOpen(true);
+    };
+
+    const handlemetodRecoveryClick = (row) => {
+
+        setSelectedNodeFailure(row.metodRecoveryDE);
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
+
+    return (
+        <>
+            <Infotext/>
+            <div className="container" style={{marginTop: "-600px"}}>
+                <div className="table-container">
+
+                    <BootstrapTable ClassName="customTable"
+                                    data={response}
+                                    keyField='id'
+                                    columns={columns}
+                                    filter={filterFactory()}
+                                    defaultSorted={[{dataField: 'dataRecovery', order: 'asc'}]}
+                    />
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        contentLabel="Node Failure Modal"
+                    >
+                        <h2>ОПИСАНИЕ</h2>
+                        {selectedNodeFailure && <p>{selectedNodeFailure}</p>}
+                        <button onClick={closeModal}>Close</button>
+                    </Modal>
+
+                </div>
+            </div>
+
+
+        </>
+
+
+    );
 };
 
-export default Complainsts;
+export default Complaints;

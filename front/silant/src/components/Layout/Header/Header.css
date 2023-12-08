@@ -1,10 +1,17 @@
+
+
+
 .header {
-    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'PT Astra Sans', sans-serif;
+    padding: 60px;
     position: relative;
     margin: 0 auto;
-    display: flex;
     flex-direction: column;
     background-color: #EBE6D6;
+    width: 100%;
 }
 
 .header .screen {
@@ -29,13 +36,13 @@
     color: #090909;
     text-align: center;
     margin: 10px;
-    font-family: 'PT Astra Sans', Arial;
+    font-family: 'PT Astra Sans', sans-serif;
 }
 
 .nav-logo {
     height: auto;
     width: 100%;
-    max-width: 300px; /* Уменьшите максимальную ширину для более плавного изменения размера */
+    max-width: 300px;
     object-fit: cover;
     margin-top: -50px;
     left: 30px;
@@ -64,21 +71,56 @@
     color: #EBE6D6;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1920px) {
+    .header .element_1,
+    .header .element {
+        width: 400px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .header .element_1,
+    .header .element {
+        width: 300px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 1536px) {
+    .header .element_1,
+    .header .element {
+        width: 350px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .header .element_1,
+    .header .element {
+        width: 320px;
+        height: 42px;
+    }
+}
+
+@media (max-width: 360px) {
     .header {
         padding: 20px;
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
 
     .header .screen {
         margin-top: 40px;
+        width: 100%;
     }
 
     .header .group {
         margin-top: 20px;
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
 
     .header .element_1,
@@ -91,8 +133,8 @@
     }
 
     .nav-logo {
-        width: 200px; /* Измените ширину логотипа для более плавного изменения размера */
-        max-width: 100%; /* Добавьте максимальную ширину 100% для адаптивности */
+        width: 200px;
+        max-width: 100%;
     }
 
     .button-auth,

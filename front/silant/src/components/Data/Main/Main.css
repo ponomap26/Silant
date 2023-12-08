@@ -7,13 +7,20 @@
     max-width: 1800px;
     margin-left: 50px; /* Отступ слева на 50px */
     margin-right: 50px;
+    font-size: 22px;
+    font-style: italic;
+    font-family: PT Astra Sans;
 
 }
 
 .table-container {
-    width: calc(100% - 100px); /* Уменьшение ширины на 100px для отступа от боковин */
-    /* Отступ справа на 50px */
+    margin-bottom: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 10px;
+
 }
+
 
 
 .header {

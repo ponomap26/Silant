@@ -10,6 +10,7 @@ admin.site.register(Transmission)
 admin.site.register(BridgeSteerable)
 admin.site.register(Bridge)
 admin.site.register(ModelCar)
+# admin.site.register(Погрузчик)
 
 
 

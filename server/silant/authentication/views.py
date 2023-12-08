@@ -1,8 +1,9 @@
 from rest_framework import viewsets, authentication
 from rest_framework.schemas import openapi
 
-from .models import ProfileUser
-from .serializers import ProfileUserSerializer
+from logicsCars.permissions import IsManager
+from .models import ProfileUser, Companies, ServisCompanies
+from .serializers import ProfileUserSerializer, CompaniesSerializer, ServisCompaniesSerializer
 from django.core import serializers
 from django.utils.translation import gettext_lazy as _
 from drf_yasg import openapi
@@ -44,3 +45,13 @@ class ProfileUserViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileUserSerializer
     authentication_classes = [authentication.TokenAuthentication]
 
+class CompaniesViewSet(viewsets.ModelViewSet):
+    queryset = Companies.objects.all()
+    serializer_class = CompaniesSerializer
+    authentication_classes = [IsManager]
+
+
+class ServisCompaniesViewSet(viewsets.ModelViewSet):
+    queryset = ServisCompanies.objects.all()
+    serializer_class = ServisCompaniesSerializer
+    authentication_classes = [IsManager]
