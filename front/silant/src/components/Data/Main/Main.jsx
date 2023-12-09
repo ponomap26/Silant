@@ -238,15 +238,7 @@ const Main = () => {
         setModalIsOpen(false);
     };
 
-    const handleInputChange = (id, field, value) => {
-        const updatedData = response.map(model => {
-            if (model.id === id) {
-                return {...model, [field]: value};
-            }
-            return model;
-        });
-        setResponse(updatedData);
-    };
+
 
     return (
         <>
@@ -268,11 +260,7 @@ const Main = () => {
                         {selectedNodeFailure && <p>{selectedNodeFailure}</p>}
                         <button onClick={closeModal}>Закрыть</button>
                     </Modal>
-                    <Form.Control
-                        type="text"
-                        value={cell}
-                        onChange={(e) => handleInputChange(row.id, 'numberBridge', e.target.value)}
-                    />
+
                 </div>
             </div>
 
