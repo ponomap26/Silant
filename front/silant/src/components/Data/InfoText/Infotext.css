@@ -3,32 +3,29 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    margin-top: -320px;
+    margin-top: -230px;
     max-width: 1800px;
-    margin-left: 50px; /* Отступ слева на 50px */
+    margin-left: 50px;
     margin-right: 50px;
-
 }
 
 .table-container {
-    width: calc(100% - 100px); /* Уменьшение ширины на 100px для отступа от боковин */
-    /* Отступ справа на 50px */
+    width: calc(100% - 100px);
 }
 
-.category-company {
+.category-company,
+.category-category {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     padding: 10px;
-    border-radius:5px;
-
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Добавленная тень */
+    border-radius: 5px;;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Added shadow */
 }
 
-.category-company h1 {
-    padding: 40px;
-    font-size: 22px;
+h1 {
+    font-size: 20px
 }
 
 .category-text {
@@ -38,8 +35,8 @@
     margin-bottom: 20px;
     font-size: 18px;
     padding: 10px;
-    border-radius:5px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Добавленная тень */
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Added shadow */
 }
 
 .header {
@@ -56,41 +53,79 @@
 .button-to,
 .button-rec,
 .button-gen {
-    margin: 0 20px; /* Изменено расстояние между кнопками */
+    margin: 0 20px;
     font-size: 18px;
-    height: 50px;
-    width: 400px;
+    height: 70px;
+    width: 500px;
     background-color: #163E6C;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Добавленная тень */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .button-to.active,
 .button-rec.active,
 .button-gen.active {
-    /*margin: 0 20px;*/
-    /*font-size: 18px;*/
-    /*height: 50px;*/
-    /*width: 400px;*/
+    margin: 0 20px;
+    font-size: 18px;
+    height: 70px;
+    width: 500px;
 
-    background-color: #011934; /* Изменение цвета при активном состоянии */
-    color: #ffffff; /* Изменение цвета текста на белый (если нужно) */
-    /* Дополнительные стили для активной кнопки */
-    /*box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);*/
+    background-color: #011934;
+    color: #ffffff;
+
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .additional-text {
-    text-align: center; /* Добавленное выравнивание текста */
-    margin-bottom: 20px; /* Добавленный отступ снизу */
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-@media (max-width: 768px) {
-    .button-container {
-        flex-direction: column;
-        align-items: center;
+@media (max-width: 1920px) {
+    .container {
+        margin-left: 100px;
+        margin-right: 100px;
+        padding: 40px;
+    }
+}
+
+@media (max-width: 1536px) {
+    .button-to,
+    .button-rec,
+    .button-gen {
+        width: 400px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .container {
+        margin-left: 40px;
+        margin-right: 40px;
+        padding: 30px;
     }
 
     .button-to,
     .button-rec,
     .button-gen {
-        margin: 10px 0;
+        width: 300px;
+    }
+}
+
+@media (max-width: 360px) {
+    .container {
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 10px;
+    }
+
+    .button-to,
+    .button-rec,
+    .button-gen {
+        width: 100%;
     }
 }

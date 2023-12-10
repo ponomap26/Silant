@@ -3,15 +3,18 @@ from rest_framework import serializers
 from .models import Complaint, NodeFailure, PartSpare
 
 
-class ComplaintSerializer (serializers.ModelSerializer):
-    nodeFailure = serializers.CharField(source="nodeFailure.name", max_length=128)
-    nodeFailureDE = serializers.CharField(source="nodeFailure.description", max_length=128)
-    componyServisor = serializers.CharField(source="componyServisor.name", max_length=128)
-    metodRecovery = serializers.CharField(source="metodRecovery.name", max_length=128)
-    metodRecoveryDE = serializers.CharField(source="metodRecovery.description", max_length=128)
+class ComplaintSerializer(serializers.ModelSerializer):
+    id = serializers.CharField(max_length=128)
+    nodeFailure = serializers.CharField(source="nodeFailure.name", max_length=128, read_only=True)
+    nodeFailureDE = serializers.CharField(source="nodeFailure.description", max_length=128, read_only=True)
+    componyServisor = serializers.CharField(source="componyServisor.name", max_length=128, read_only=True)
+    metodRecovery = serializers.CharField(source="metodRecovery.name", max_length=128, read_only=True)
+    metodRecoveryDE = serializers.CharField(source="metodRecovery.description", max_length=128, read_only=True)
+
     class Meta:
         model = Complaint
         fields = [
+            'id',
             'carNumber',
             'dataRefusal',
             'operatingTime',
@@ -25,7 +28,6 @@ class ComplaintSerializer (serializers.ModelSerializer):
             'downtime',
             'componyServisor',
         ]
-
 
 
 class NodeFailureSerializer (serializers.ModelSerializer):

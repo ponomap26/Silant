@@ -39,25 +39,25 @@ class ModelCarViewSet(viewsets.ModelViewSet):
 class ModelsLoaderViewSet(viewsets.ModelViewSet):
     queryset = ModelsLoader.objects.all()
     serializer_class = ModelsLoaderSerializer
-    # permission_classes = [IsManager]
+
 
 
 class EnginesViewSet(viewsets.ModelViewSet):
     queryset = Engines.objects.all()
     serializer_class = EnginesSerializer
-    permission_classes = [IsManager]
+
 
 
 class TransmissionViewSet(viewsets.ModelViewSet):
     queryset = Transmission.objects.all()
     serializer_class = TransmissionSerializer
-    permission_classes = [IsManager]
+
 
 
 class BridgeViewSet(viewsets.ModelViewSet):
     queryset = Bridge.objects.all()
     serializer_class = BridgeSerializer
-    permission_classes = [IsManager]
+
 
 
 class BridgeSteerableViewSet(viewsets.ModelViewSet):

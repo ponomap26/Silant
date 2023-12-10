@@ -1,13 +1,12 @@
 from django.urls import include, path
+from rest_framework import routers
+from complaints.views import ComplaintViewSet, NodeFailureViewSet, PartSpareViewSet
 
-from .views import ComplaintViewSet, NodeFailureViewSet, PartSpareViewSet
+router = routers.DefaultRouter()
+router.register(r'complaints', ComplaintViewSet)
+router.register(r'nodefailures', NodeFailureViewSet)
+router.register(r'partspares', PartSpareViewSet)
 
 urlpatterns = [
-    path('complaints/', ComplaintViewSet.as_view({'get': 'list', 'post': 'create', })),
-    path('complaints/<int:pk>/', ComplaintViewSet.as_view({'get': 'list', 'delete': 'delete'})),
-    path('nodefailure/', NodeFailureViewSet.as_view({'get': 'list', 'post': 'create', })),
-    path('nodefailure/<int:pk>/', NodeFailureViewSet.as_view({'get': 'list', 'delete': 'delete'})),
-    path('partspare/', PartSpareViewSet.as_view({'get': 'list', 'post': 'create', })),
-    path('partspare/<int:pk>/', PartSpareViewSet.as_view({'get': 'list', 'delete': 'delete'})),
-
+    path('', include(router.urls)),
 ]

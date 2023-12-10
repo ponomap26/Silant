@@ -43,6 +43,9 @@ class IsManager(permissions.IsAuthenticated):
         except:
             return False
         if request.method == 'POST' and Profiles.сategory == "Manager":
+
+            return True
+        if request.method == 'PUT' and Profiles.сategory == "Manager":
             return True
         if request.method == 'PATCH' and Profiles.сategory == "Manager":
             return True

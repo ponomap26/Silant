@@ -13,11 +13,14 @@ class IsAtchTOService(permissions.IsAuthenticated):
             Profiles = ProfileUser.objects.get(user_id=request.user.id)
         except:
             return False
-        if request.method == 'POST' and (Profiles.сategory == "Менеджер" or Profiles.сategory == "Сервис"):
+        if request.method == 'POST' and (Profiles.сategory == "Manager" or Profiles.сategory == "Service"):
             return True
-        if request.method == 'PATCH' and (Profiles.сategory == "Менеджер" or Profiles.сategory == "Сервис"):
+        if request.method == 'PUT' and (Profiles.сategory == "Manager" or Profiles.сategory == "Service"):
             return True
-        if request.method == 'DELETE' and (Profiles.сategory == "Менеджер" or Profiles.сategory == "Сервис"):
+
+        if request.method == 'PATCH' and (Profiles.сategory == "Manager" or Profiles.сategory == "Service"):
+            return True
+        if request.method == 'DELETE' and (Profiles.сategory == "Manager" or Profiles.сategory == "Service"):
             return True
 
     def has_object_permission(self, request, view, obj):

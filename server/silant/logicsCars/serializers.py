@@ -29,7 +29,7 @@ class ModelCarSerializer(serializers.ModelSerializer):
             'numberFactory',
             'modelsEngines',
             'numberEngines',
-            'dateCreated',
+            # 'dateCreated',
             'transmissions',
             'numberTransmissions',
             'modelsBridge',
@@ -63,57 +63,63 @@ class ModelCarNouSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ModelCar
-        fields = ['modelCar',
-                  'modelCarDe',
-                  'equipment',
-                  'numberFactory',
-                  'modelsEngines',
-                  'modelsEnginesDe',
-                  'numberEngines',
-                  'dateCreated',
-                  'transmissions',
-                  'transmissionsDE',
-                  'numberTransmissions',
-                  'modelsBridge',
-                  'modelsBridgeDe',
-                  'numberBridge',
-                  'modelsBridgeSteerable',
-                  'modelsBridgeSteerableDe',
-                  'numberBridgeSteerable',
-                  ]
+        fields = [
+            'id',
+            'modelCar',
+            'modelCarDe',
+            'equipment',
+            'numberFactory',
+            'modelsEngines',
+            'modelsEnginesDe',
+            'numberEngines',
+            # 'dateCreated',
+            'transmissions',
+            'transmissionsDE',
+            'numberTransmissions',
+            'modelsBridge',
+            'modelsBridgeDe',
+            'numberBridge',
+            'modelsBridgeSteerable',
+            'modelsBridgeSteerableDe',
+            'numberBridgeSteerable',
+        ]
 
 
 class ModelsLoaderSerializer(serializers.ModelSerializer):
     """Serializer  Модель техники"""
+
     class Meta:
-        model =ModelsLoader
+        model = ModelsLoader
         fields = '__all__'
-
-
 
 
 class EnginesSerializer(serializers.ModelSerializer):
     """Serializer   модель Двигатель"""
+
     class Meta:
-        model =Engines
+        model = Engines
         fields = '__all__'
+
 
 class TransmissionSerializer(serializers.ModelSerializer):
     """Serializer  модель Трансмисия"""
+
     class Meta:
-        model =Transmission
+        model = Transmission
         fields = '__all__'
 
 
 class BridgeSerializer(serializers.ModelSerializer):
     """Serializer  модель Ведуший мост"""
+
     class Meta:
-        model =Bridge
+        model = Bridge
         fields = '__all__'
 
 
 class BridgeSteerableSerializer(serializers.ModelSerializer):
     """Serializer  модель  Управляемый мост"""
+
     class Meta:
-        model =BridgeSteerable
+        model = BridgeSteerable
         fields = '__all__'

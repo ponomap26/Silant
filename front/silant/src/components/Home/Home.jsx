@@ -26,7 +26,7 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/modelNou/");
+                const response = await axios.get("http://127.0.0.1:8000/modelcar-noauth/");
                 setResponse(response.data);
                 console.log(response);
             } catch (error) {
@@ -60,7 +60,7 @@ const Home = () => {
                     return <GoArrowUp/>;
                 }
                 if (order === 'desc') {
-                    return <GoArrowDown />;
+                    return <GoArrowDown color='DB1882FF'/>;
                 }
                 return null;
             },

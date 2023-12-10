@@ -1,65 +1,70 @@
 import axios from "axios";
-import { Button } from "react-bootstrap";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {Button} from "react-bootstrap";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import "./Infotext.css";
 
 const Infotext = () => {
-  const navigate = useNavigate();
-  const company = localStorage.getItem("company");
-  const category = localStorage.getItem("category");
+    const navigate = useNavigate();
+    const company = localStorage.getItem("company");
+    const category = localStorage.getItem("category");
 
-  const [activeButton, setActiveButton] = useState(null);
+    const [activeButton, setActiveButton] = useState(null);
 
-  const handleTechnicalMaintenanceClick = () => {
-    navigate("/maintenance");
-    setActiveButton("technicalMaintenance");
-  };
+    const handleTechnicalMaintenanceClick = () => {
+        navigate("/maintenance");
+        setActiveButton("technicalMaintenance");
+    };
 
-  const handleComplaintOnClick = () => {
-    navigate("/complaint");
-    setActiveButton("complaint");
-  };
+    const handleComplaintOnClick = () => {
+        navigate("/complaint");
+        setActiveButton("complaint");
+    };
 
-  const handleGenralClick = () => {
-    navigate("/main");
-    setActiveButton("general");
-  };
+    const handleGenralClick = () => {
+        navigate("/main");
+        setActiveButton("general");
+    };
 
-  return (
-    <div className="container">
-      <div className="table-container">
-        <div className="category-company">
-          <h1>Категория - "{category}"</h1>
-          <h1>Компания - "{company}"</h1>
+    return (
+        <div className="container">
+            <div className="table-container">
+                <div className="category-category">
+                    <h1>Категория - "{category}"</h1>
+
+                </div>
+                <div className="category-category">
+                    <h1> Компания - "{company}" </h1>
+                </div>
+                <div className="category-text">
+                    <p>Информация о комплектации и техническом обслуживании вашей техники</p>
+                </div>
+
+                <div className="button-container">
+                    <Button
+                        className={`button-gen ${activeButton === "general" ? "active" : ""}`}
+                        onClick={handleGenralClick}
+                    >
+                        Общая информация
+                    </Button>
+                    <Button
+                        className={`button-to ${activeButton === "technicalMaintenance" ? "active" : ""}`}
+                        onClick={handleTechnicalMaintenanceClick}
+                    >
+                        Техническое обслуживание
+                    </Button>
+                    <Button
+                        className={`button-rec ${activeButton === "complaint" ? "active" : ""}`}
+                        onClick={handleComplaintOnClick}
+                    >
+                        Рекламация
+                    </Button>
+                </div>
+            </div>
         </div>
-        <div className="category-text">
-          <p>Информация о комплектации и техническом обслуживании вашей техники</p>
-        </div>
 
-        <div className="button-container">
-          <Button
-            className={`button-gen ${activeButton === "general" ? "active" : ""}`}
-            onClick={handleGenralClick}
-          >
-            Общая информация
-          </Button>
-          <Button
-            className={`button-to ${activeButton === "technicalMaintenance" ? "active" : ""}`}
-            onClick={handleTechnicalMaintenanceClick}
-          >
-            Техническое обслуживание
-          </Button>
-          <Button
-            className={`button-rec ${activeButton === "complaint" ? "active" : ""}`}
-            onClick={handleComplaintOnClick}
-          >
-            Рекламация
-          </Button>
-        </div>
-      </div>
-    </div>
-  );
+    )
+        ;
 };
 
 export default Infotext;

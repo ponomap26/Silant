@@ -1,16 +1,16 @@
 /* Стили для таблицы */
-.container {
+.container-complans {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-size: 18px;
-    font-family: PT Astra Sans;
+    font-family: 'PT Astra Sans', sans-serif;
 
-    /*margin-bottom: 20px;*/
-    /*padding-left: 100px;*/
-    /*padding-right: 100px;*/
-    /*margin-top: 30px;*/
+    margin-bottom: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top:-500px;
 }
 
 .table-container {
@@ -20,7 +20,7 @@
 
 .table {
     width: 100%;
-    border-collapse: collapse;
+    /*border-collapse: collapse;*/
     margin-bottom: 20px;
     padding-left: 100px;
     padding-right: 100px;
@@ -28,6 +28,7 @@
     background-color: #dc1010;
     border: 1px solid #ccc;
     box-shadow: 0px 0px 20px rgb(22, 62, 108);
+    overflow-y: auto;
 }
 
 /* Стили для заголовков столбцов */

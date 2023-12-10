@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import Infotext from "../InfoText/Infotext";
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -8,6 +8,7 @@ import filterFactory, {textFilter} from 'react-bootstrap-table2-filter';
 import Modal from 'react-modal';
 import "./Complainsts.css"
 import {GoArrowDown, GoArrowUp} from "react-icons/go"
+import {Button} from "react-bootstrap";
 
 const Complaints = () => {
     const navigate = useNavigate();
@@ -44,7 +45,24 @@ const Complaints = () => {
         fetchData();
     }, []);
 
+   const
+            handleModelCarEdit = (id) => {
+                navigate(`/complaint-details/${id}`);
+            };
     const columns = [
+       {
+                dataField: 'edit',
+                text: 'Изменить',
+                formatter: (cell, row) => {
+                    console.log(row.id); // Вывод идентификатора в консоль
+                    return (
+                        <div>
+                            <span>{cell}</span>
+                            <Button onClick={() => handleModelCarEdit(row.id)}>Перейти</Button>
+                        </div>
+                    );
+                }
+            },
         {
             dataField: 'carNumber',
             text: 'Зав № машины',
@@ -135,7 +153,7 @@ const Complaints = () => {
     return (
         <>
             <Infotext/>
-            <div className="container" style={{marginTop: "-600px"}}>
+            <div className="container-complans" >
                 <div className="table-container">
 
                     <BootstrapTable ClassName="customTable"

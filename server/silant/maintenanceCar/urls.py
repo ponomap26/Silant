@@ -1,11 +1,11 @@
-
 from django.urls import include, path
+from rest_framework import routers
+from .views import CarToViewSet, CarMaintenanceViewSet
 
-from maintenanceCar.views import CarMaintenanceViewSet
-
+router = routers.DefaultRouter()
+router.register(r'car-to', CarToViewSet)
+router.register(r'car-maintenance', CarMaintenanceViewSet)
 
 urlpatterns = [
-
-    path('maintence/', CarMaintenanceViewSet.as_view({'get': 'list', 'post': 'create'})),
-    path('maintence/<int:pk>/', CarMaintenanceViewSet.as_view({'get': 'list', 'delete': 'delete'})),
+    path('', include(router.urls)),
 ]

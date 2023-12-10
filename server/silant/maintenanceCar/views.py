@@ -4,31 +4,38 @@ from django.shortcuts import render
 from rest_framework import viewsets
 
 from authentication.models import ProfileUser
-from logicsCars.models import ModelCar
-from .models import CarMaintenance
-from .permissions import IsAtchTOService
-from .serializers import CarMaintenanceInfoLoadersSerializer
+
+from .models import CarMaintenance, CarTo
+
+from .serializers import CarMaintenanceInfoLoadersSerializer, CarToInfoLoadersSerializer
+
+
+class CarToViewSet(viewsets.ModelViewSet):
+    queryset = CarTo.objects.all()
+    serializer_class = CarToInfoLoadersSerializer
+
 
 
 class CarMaintenanceViewSet(viewsets.ModelViewSet):
-
+    queryset = CarMaintenance.objects.all()
     serializer_class = CarMaintenanceInfoLoadersSerializer
-    # permission_classes = [IsAtchTOService]
+
 
     def get_queryset(self):
         user = self.request.user
-        queryset = CarMaintenance.objects.all()
+        # queryset = CarMaintenance.objects.all()
         if user.is_authenticated:
             profile = ProfileUser.objects.filter(user=user).first()
             if profile.category == "Менеджер":
-                return queryset
+                return CarMaintenance.objects.all()
 
-        #     elif profile.category == "Сервисная организация":
-        #
-        #         return CarMaintenance.objects.filter(Number__client__name=profile.company)
-        #     # else:
-        #     #     return CarMaintenance.objects.filter(client=profile.company)
-        # else:
-        #     return CarMaintenance.objects.none()
+            elif profile.category == "Сервисная организация":
+
+                return CarMaintenance.objects.filter(Number__serviceCompanies__name=profile.company)
+            elif profile.category == "Клиент":
+
+                return CarMaintenance.objects.filter(Number__client__name=profile.company)
+        else:
+            return CarMaintenance.objects.none()
 
 

@@ -5,7 +5,7 @@ from authentication.models import Companies, ServisCompanies
 
 class ModelsLoader(models.Model):
     modelsCar = models.CharField(max_length=128, verbose_name='Название Модели ')
-    description = models.TextField(blank=True, verbose_name='Описание')
+    description = models.TextField(blank=True, null=True)
 
     class Meta:
         verbose_name = 'модель Погрузчик'
@@ -17,7 +17,7 @@ class ModelsLoader(models.Model):
 
 class Engines(models.Model):
     modelEngines = models.CharField(max_length=128, verbose_name='Двигатель')
-    description = models.TextField(blank=False, verbose_name='Описание')
+    description = models.TextField(blank=True, null=True)
 
     class Meta:
         verbose_name = 'Двигатель'
@@ -29,7 +29,7 @@ class Engines(models.Model):
 
 class Transmission(models.Model):
     modelTransmission = models.CharField(max_length=128, verbose_name='Трансмисия')
-    description = models.TextField(blank=False, verbose_name='Описание')
+    description = models.TextField(blank=False, null=True)
 
     class Meta:
         verbose_name = 'Трансмисия'
@@ -41,7 +41,7 @@ class Transmission(models.Model):
 
 class Bridge(models.Model):
     modelBridge = models.CharField(max_length=128, verbose_name='Ведуший мост')
-    description = models.TextField(verbose_name='Описание')
+    description = models.TextField(blank=False, null=True)
 
     class Meta:
         verbose_name = 'Ведущей мост'
@@ -53,7 +53,7 @@ class Bridge(models.Model):
 
 class BridgeSteerable(models.Model):
     modelSteerable = models.CharField(max_length=128, verbose_name='Управляемый мост')
-    description = models.TextField(blank=False, verbose_name='Описание')
+    description = models.TextField(blank=False, null=True)
 
     class Meta:
         verbose_name = 'Управляемый мост'
@@ -72,7 +72,7 @@ class ModelCar(models.Model):
     modelsEngines = models.ForeignKey(Engines, on_delete=models.PROTECT, db_index=True, verbose_name='Модель двигателя',
                                       related_name='children')
     numberEngines = models.CharField(max_length=128, db_index=True, verbose_name='Номер двигателя')
-    dateCreated = models.DateField(db_index=True, verbose_name="Дата создания", auto_now_add=True, null=True)
+    # dateCreated = models.DateField(db_index=True, verbose_name="Дата создания", auto_now_add=True, null=True)
     transmissions = models.ForeignKey(Transmission, db_index=True, on_delete=models.PROTECT, verbose_name='Трансмиссия',
                                       related_name='children')
     numberTransmissions = models.CharField(max_length=128, db_index=True, verbose_name='Номер трансмиссии')

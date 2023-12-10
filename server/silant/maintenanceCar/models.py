@@ -6,7 +6,7 @@ from logicsCars.models import ModelCar
 
 class CarTo(models.Model):
     maintenance = models.CharField(max_length=128, verbose_name="Вид ТО")
-    description = models.TextField(blank=True, verbose_name="Описание")
+    description = models.TextField(blank=True, null=True)
 
     class Meta:
         verbose_name = "Вид ТО"
