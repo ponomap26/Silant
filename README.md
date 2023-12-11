@@ -14,3 +14,11 @@
 Перейдите в папку проекта:
 ```shell
    cd Silant
+Backend:
+```shell
+   cd server:
+Устновите виртуальное окружение и установите зависимости
+
+запустите сервер:
+```shell
+   python manage.py runserver 
