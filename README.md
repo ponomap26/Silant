@@ -22,6 +22,7 @@ git clone https://github.com/ponomap26/Silant.git
 
    ```shell
    cd server
+   cd silant
 
 3. Установите виртуальное окружение и зависимости:
 
@@ -40,6 +41,7 @@ git clone https://github.com/ponomap26/Silant.git
 
    ```shell
    cd front
+   cd silant
 
 2. Установите зависимости:
 
