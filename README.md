@@ -11,3 +11,6 @@
 
    ```shell
    git clone https://github.com/ponomap26/Silant.git
+Перейдите в папку проекта:
+```shell
+   cd Silant
