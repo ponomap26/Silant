@@ -167,9 +167,7 @@ const Maintenance = () => {
 
                     </div>
 
-
                 </div>
-
 
             </>
 
