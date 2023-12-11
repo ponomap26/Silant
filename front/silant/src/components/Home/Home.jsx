@@ -159,8 +159,8 @@ const Home = () => {
 
 return (
     <>
-        <div className="container" style={{marginTop: "0px"}}>
-            <div className="table-container">
+        <div className="container" style={{marginTop: "50px"}}>
+            <div >
                 <BootstrapTable ClassName="customTable"
                                  data={response}
                                     keyField='id'
