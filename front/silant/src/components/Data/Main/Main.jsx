@@ -217,7 +217,6 @@ const Main = (props) => {
             setModalIsOpen(false);
         };
 
-
         return (
             <>
                 <Infotext/>
