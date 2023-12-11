@@ -159,7 +159,7 @@ const Complaints = () => {
     return (
         <>
             <Infotext/>
-            <div className="container-complans" style={{marginTop: "-250px"}} >
+            <div className="container-complans" style={{marginTop: "-50px"}} >
                 <div className="table-container">
 
                     <BootstrapTable ClassName="customTable"

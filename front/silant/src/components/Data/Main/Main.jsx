@@ -221,7 +221,7 @@ const Main = (props) => {
         return (
             <>
                 <Infotext/>
-                <div className="container-main" style={{marginTop: "-250px"}}>
+                <div className="container-main" style={{marginTop: "-50px"}}>
                     <div className="table-container">
                         <BootstrapTable
                             keyField="id"

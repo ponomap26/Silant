@@ -27,7 +27,7 @@ const Infotext = () => {
     };
 
     return (
-        <div className="container"  style={{marginTop: "-250px"}}>
+        <div className="container"  style={{marginTop: "-50px"}}>
             <div className="table-container">
                 <div className="category-category">
                     <h1>Категория - "{category}"</h1>
