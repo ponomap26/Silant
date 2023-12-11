@@ -7,7 +7,7 @@ class ComplaintSerializer(serializers.ModelSerializer):
     id = serializers.CharField(max_length=128)
     nodeFailure = serializers.CharField(source="nodeFailure.name", max_length=128, read_only=True)
     nodeFailureDE = serializers.CharField(source="nodeFailure.description", max_length=128, read_only=True)
-    componyServisor = serializers.CharField(source="componyServisor.name", max_length=128, read_only=True)
+    serviceCompanies = serializers.CharField(source="serviceCompanies.name", max_length=128, read_only=True)
     metodRecovery = serializers.CharField(source="metodRecovery.name", max_length=128, read_only=True)
     metodRecoveryDE = serializers.CharField(source="metodRecovery.description", max_length=128, read_only=True)
 
@@ -26,7 +26,7 @@ class ComplaintSerializer(serializers.ModelSerializer):
             'partSpare',
             'dataRecovery',
             'downtime',
-            'componyServisor',
+            'serviceCompanies',
         ]
 
 

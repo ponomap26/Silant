@@ -133,7 +133,7 @@ const Complaints = () => {
 
 
         {
-            dataField: 'componyServisor',
+            dataField: 'serviceCompanies',
             text: 'Сервисная компания',
             filter: textFilter()
         },
@@ -159,7 +159,7 @@ const Complaints = () => {
     return (
         <>
             <Infotext/>
-            <div className="container-complans" >
+            <div className="container-complans" style={{marginTop: "-250px"}} >
                 <div className="table-container">
 
                     <BootstrapTable ClassName="customTable"

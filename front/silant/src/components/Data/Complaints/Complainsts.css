@@ -1,5 +1,6 @@
-/* Стили для таблицы */
-.container-complans {
+
+.container {
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,118 +11,61 @@
     margin-bottom: 20px;
     padding-left: 100px;
     padding-right: 100px;
-    margin-top:-500px;
+    margin-top:400px;
 }
+
 
 .table-container {
-    width: 100%;
-}
-
-
-.table {
-    width: 100%;
-    /*border-collapse: collapse;*/
-    margin-bottom: 20px;
-    padding-left: 100px;
-    padding-right: 100px;
-    margin-top: 30px;
-    background-color: #dc1010;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 20px rgb(22, 62, 108);
+    margin-bottom: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 10px;
     overflow-y: auto;
+    font-family: 'PT Astra Sans', sans-serif;
+
+
 }
 
-/* Стили для заголовков столбцов */
-.customTable th {
-    background-color: #c75555;
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
 
-/* Стили для ячеек таблицы */
-.customTable td {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
+/*.header {*/
+/*    text-align: center;*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
-/* Стили для кнопок внутри таблицы */
-.customTable button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    cursor: pointer;
-}
 
-/* Стили для модального окна */
-.modal {
-    display: none; /* Скрыть модальное окно по умолчанию */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
+.table-data {
     width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
 }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Адаптивные стили для разрешений экранов */
-
-/* Для разрешения 1920x1080 */
 @media screen and (min-width: 1920px) {
-    .customTable {
-        /* Ваши стили для разрешения 1920x1080 */
+    .container {
+        max-width: 1800px;
     }
 }
 
-/* Для разрешения 1366x768 */
 @media screen and (min-width: 1366px) {
-    .customTable {
-        /* Ваши стили для разрешения 1366x768 */
+    .container {
+        max-width: 1366px;
     }
 }
 
-/* Для разрешения 1536x864 */
 @media screen and (min-width: 1536px) {
-    .customTable {
-        /* Ваши стили для разрешения 1536x864 */
+    .container {
+        max-width: 1536px;
     }
 }
 
-/* Для разрешения 1440x900 */
 @media screen and (min-width: 1440px) {
-    .customTable {
-        /* Ваши стили для разрешения 1440x900 */
+    .container {
+        max-width: 1440px;
     }
 }
 
-/* Для разрешения 360x640 */
-@media screen and (min-width: 360px) {
-    .customTable {
-        /* Ваши стили для разрешения 360x640 */
+@media screen and (min-width: 360px) and (max-width: 640px) {
+    .container {
+        max-width: 360px;
     }
 }
+

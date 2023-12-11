@@ -68,8 +68,8 @@ const LoaderComplaints = (props) => {
             <Link className="button-link" to="/main">
                 <Button>Назад</Button>
             </Link>
-            <Form className="button-form"  onSubmit={handleSubmit}>
-                <Button type="submit">Сохранить изменения</Button>
+            <Form   onSubmit={handleSubmit}>
+                <Button className="button-form" type="submit">Сохранить изменения</Button>
             </Form>
             {savedMessage && <p>Данные сохранены</p>}
 
