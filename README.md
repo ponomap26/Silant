@@ -58,7 +58,9 @@ git clone https://github.com/ponomap26/Silant.git
 API проекта
  api http://127.0.0.1:8000/swagger/
 ## Пользователи
-
+- Суперпользователь базу данных:
+  - Логин: admin
+  - Пароль: admin
 - Менеджер:
   - Логин: admin
   - Пароль: admin
