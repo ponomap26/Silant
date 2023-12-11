@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
-  "author": "",
+  "author": "ponomap26@yandex.ru",
   "license": "ISC",
   "dependencies": {
     "@react-buddy/ide-toolbox": "^2.4.0",
