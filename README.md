@@ -11,14 +11,17 @@
 
    ```shell
    git clone https://github.com/ponomap26/Silant.git
-Перейдите в папку проекта:
-```shell
+   
+2. Перейдите в папку проекта:
+
+   ```shell
    cd Silant
+   
 Backend:
-```shell
-   cd server:
-Устновите виртуальное окружение и установите зависимости
+   ```shell
+      cd server:
+   Устновите виртуальное окружение и установите зависимости
 
 запустите сервер:
-```shell
-   python manage.py runserver 
+   ```shell
+      python manage.py runserver 
