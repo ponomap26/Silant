@@ -36,7 +36,7 @@ class TokenAuthView(ObtainAuthToken):
             'user_id': user.pk,
             'user_name': user.username,
             'category': queryset.category,
-            'company': queryset.company.name,  # Include serialized company
+            'company': queryset.company.name,
         })
 
 

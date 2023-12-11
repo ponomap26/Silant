@@ -1,7 +1,7 @@
 from django.db import models
 
-from authentication.models import Companies, ServisCompanies
-# from logicsCars.models import ModelCar
+from authentication.models import  ServisCompanies
+
 from logicsCars.models import ModelCar
 
 
