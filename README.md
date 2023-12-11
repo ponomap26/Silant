@@ -54,7 +54,7 @@ git clone https://github.com/ponomap26/Silant.git
 4. Перейдите на страницу:
 
 [http://localhost:8080/](http://localhost:8080/)
-
+ api http://127.0.0.1:8000/swagger/
 ## Пользователи
 
 - Менеджер:
