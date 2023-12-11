@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.button-link {
+  margin-bottom: 10px;
+}
+
+.button-form {
+  margin-bottom: 10px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-item {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-item th,
+.table-item td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.table-item th {
+  background-color: #f2f2f2;
+}
+
+.table-item input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.table-item p {
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .table-item {
+    font-size: 12px;
+  }
+}

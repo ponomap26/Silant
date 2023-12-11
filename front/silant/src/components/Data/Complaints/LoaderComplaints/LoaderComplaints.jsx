@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
-
+import "./LoaderComplainsts.css"
 import {Button, Form} from "react-bootstrap";
 
 
@@ -68,7 +68,7 @@ const LoaderComplaints = (props) => {
             <Link className="button-link" to="/main">
                 <Button>Назад</Button>
             </Link>
-            <Form className="button-form" onSubmit={handleSubmit}>
+            <Form className="button-form"  onSubmit={handleSubmit}>
                 <Button type="submit">Сохранить изменения</Button>
             </Form>
             {savedMessage && <p>Данные сохранены</p>}
@@ -114,7 +114,7 @@ const LoaderComplaints = (props) => {
 
                         </tr>
                         <tr>
-                            <td>Описание Узел отказа</td>
+                            <td>Узел отказа</td>
                             <td>{data.nodeFailureDE}</td>
 
 

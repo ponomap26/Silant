@@ -52,15 +52,21 @@ const Complaints = () => {
     const columns = [
        {
                 dataField: 'edit',
-                text: 'Изменить',
+                text: 'Действие',
                 formatter: (cell, row) => {
-                    console.log(row.id); // Вывод идентификатора в консоль
-                    return (
-                        <div>
-                            <span>{cell}</span>
-                            <Button onClick={() => handleModelCarEdit(row.id)}>Перейти</Button>
-                        </div>
-                    );
+                    console.log(row.id);
+                    const category = localStorage.getItem('category');
+
+                    if (category !== 'Клиент' ) {
+                        return (
+                            <div>
+                                <span>{cell}</span>
+                                <Button onClick={() => handleModelCarEdit(row.id)}>Перейти</Button>
+                            </div>
+                        );
+                    } else {
+                        return <span>{cell}</span>;
+                    }
                 }
             },
         {

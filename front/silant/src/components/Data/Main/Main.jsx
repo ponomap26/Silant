@@ -16,7 +16,7 @@ const Main = (props) => {
         const [data, setData] = useState([]);
         const [selectedRow, setSelectedRow] = useState(null);
         const [modalIsOpen, setModalIsOpen] = useState(false);
-         const [numberFactory, setNumberFactory] = useState(null);
+        const [numberFactory, setNumberFactory] = useState(null);
 
         const navigate = useNavigate();
         const [selectedNodeFailure, setSelectedNodeFailure] = useState(null);
@@ -50,22 +50,27 @@ const Main = (props) => {
                 navigate(`/loader-details/${id}`);
             };
 
-
+        const category = localStorage.getItem("category");
         const columns = [
             {
                 dataField: 'edit',
-                text: '',
+                text: 'Действие',
                 formatter: (cell, row) => {
-                    console.log(row.id); // Вывод идентификатора в консоль
-                    return (
-                        <div>
-                            <span>{cell}</span>
-                            <Button onClick={() => handleModelCarEdit(row.id)}>Перейти</Button>
-                        </div>
-                    );
+                    console.log(row.id);
+                    const category = localStorage.getItem('category');
+
+                    if (category !== 'Клиент' && category !== 'Сервисная организация') {
+                        return (
+                            <div>
+                                <span>{cell}</span>
+                                <Button onClick={() => handleModelCarEdit(row.id)}>Перейти</Button>
+                            </div>
+                        );
+                    } else {
+                        return <span>{cell}</span>;
+                    }
                 }
             },
-
             {
                 dataField: 'modelCar',
                 text: 'Модель техники',
@@ -211,7 +216,6 @@ const Main = (props) => {
         const closeModal = () => {
             setModalIsOpen(false);
         };
-
 
 
         return (

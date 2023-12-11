@@ -48,7 +48,7 @@ const Maintenance = () => {
     return (
         <div>
             <Infotext/>
-            <div className="container-maints"style={{marginTop: "-450px"}} >
+            <div className="container-maints"style={{marginTop: "-650px"}} >
 
                 <div className="table-container">
                     {response && (

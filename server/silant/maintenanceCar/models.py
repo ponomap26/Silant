@@ -1,6 +1,7 @@
 from django.db import models
 
 # from logicsCars.models import ModelCar
+from authentication.models import ServisCompanies
 from logicsCars.models import ModelCar
 
 
@@ -23,7 +24,8 @@ class CarMaintenance(models.Model):
     operatingTime = models.CharField(max_length=128, blank=True, verbose_name="Наработка")
     order_outfit = models.CharField(max_length=128, blank=True, verbose_name="Номер заказ наряда")
     data_order_outfit = models.DateField(db_index=True, verbose_name="Дата заказ наряда")
-
+    serviceCompanies = models.ForeignKey(ServisCompanies, db_index=True, null=True, on_delete=models.PROTECT,
+                                         verbose_name="Сервисная компания")
     # def __init__(self, *args, **kwargs):
     #     super().__init__(args, kwargs)
     #     self.numberFactory = None

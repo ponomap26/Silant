@@ -65,13 +65,16 @@ const LoaderMaintains = (props) => {
     return (
 
         <div className="container" style={{marginTop: "0px"}}>
-            <Link className="button-link" to="/main">
-                <Button>Назад</Button>
-            </Link>
-            <Form className="button-form" onSubmit={handleSubmit}>
-                <Button type="submit">Сохранить изменения</Button>
-            </Form>
+
+                <Link className="button-link" to="/main">
+                    <Button>Назад</Button>
+                </Link>
+                <Form  onSubmit={handleSubmit}>
+                    <Button type="submit">Сохранить изменения</Button>
+                </Form>
             {savedMessage && <p>Данные сохранены</p>}
+
+
 
 
             {data && (

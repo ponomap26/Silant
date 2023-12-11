@@ -23,7 +23,7 @@ class ComplaintViewSet(viewsets.ModelViewSet):
 
             elif profile.category == "Сервисная организация":
 
-                return Complaint.objects.filter(carNumber__serviceCompanies__name=profile.company)
+                return Complaint.objects.filter(serviceCompanies__name__name=profile.company)
             elif profile.category == "Клиент":
 
                 return Complaint.objects.filter(carNumber__client__name=profile.company)

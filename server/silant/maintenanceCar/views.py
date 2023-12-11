@@ -31,7 +31,7 @@ class CarMaintenanceViewSet(viewsets.ModelViewSet):
 
             elif profile.category == "Сервисная организация":
 
-                return CarMaintenance.objects.filter(Number__serviceCompanies__name=profile.company)
+                return CarMaintenance.objects.filter(serviceCompanies__name__name=profile.company)
             elif profile.category == "Клиент":
 
                 return CarMaintenance.objects.filter(Number__client__name=profile.company)

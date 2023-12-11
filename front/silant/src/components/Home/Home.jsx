@@ -159,7 +159,7 @@ const Home = () => {
 
 return (
     <>
-        <div className="container" style={{marginTop: "-200px"}}>
+        <div className="container" style={{marginTop: "0px"}}>
             <div className="table-container">
                 <BootstrapTable ClassName="customTable"
                                  data={response}
