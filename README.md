@@ -11,44 +11,45 @@
 
 ```shell
 git clone https://github.com/ponomap26/Silant.git
-   
-2. Перейдите в папку проекта:
 
-```shell
-cd Silant
+
+2. Перейдите в папку проекта:
+   
+   ```shell
+   cd Silant
    
 ## Backend:
 
-```shell
-cd server
+   ```shell
+   cd server
 
 3. Установите виртуальное окружение и зависимости:
 
-```shell
-pip install -r requirements.txt
+   ```shell
+   pip install -r requirements.txt
 
 4. Запустите сервер:
 
-```shell
-python manage.py runserver
+   ```shell
+   python manage.py runserver
 
 
 ## Запуск фронтенда
 
 1. Перейдите в папку с фронтендом:
 
-```shell
-cd front
+   ```shell
+   cd front
 
 2. Установите зависимости:
 
-```shell
-npm install
+   ```shell
+   npm install
 
 3. Запустите сервер:
 
-```shell
-npm start
+   ```shell
+   npm start
 
 4. Перейдите на страницу:
 
